@@ -7,7 +7,7 @@ class PhotoWheel extends React.Component {
 		super(props);
     this.state = {
     	photos: [],
-    	restaurant: 1
+    	restaurant: 2
     }
 	}
 
@@ -31,12 +31,13 @@ getData() {
 
 	render() {
 		return (
-	  <div>hi</div>
-	  {
-	    for(var i = 0; i < 5; i++) {
-		    <img src={this.state.photos[i]}>
-	    }
-    }
+	  <div>
+		  {this.state.photos.map((ele) => {
+			  <img src={ele}/>
+			})
+		  }
+
+	  </div>
 		);
   } 
 }
