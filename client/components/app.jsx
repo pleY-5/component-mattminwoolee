@@ -1,10 +1,10 @@
 import React from 'react';
 
-// var App = () => {
-// 	return (
-    
+var App = () => {
+	return (
+  <div>hi</div>
   
-// 	);
-// }
+	)
+}
 
 export default App;
