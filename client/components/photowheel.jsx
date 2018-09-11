@@ -7,8 +7,9 @@ class PhotoWheel extends React.Component {
 		super(props);
     this.state = {
     	photos: [],
-    	restaurant: 2
+    	restaurant: 4
     }
+    this.clickHandler = this.clickHandler.bind(this);
 	}
 
 componentWillMount() {
@@ -29,13 +30,16 @@ getData() {
 
 }
 
+clickHandler() {
+  console.log('hi');	
+}
+
 	render() {
-		console.log(styles);
 		return (
-	  <div className="hi">
+	  <div className="hi">test
 	  <p className={styles.test}>test</p>
 		  {this.state.photos.map((ele) => {
-			  return <img src={ele.url} className={styles.image}/>
+			  return <img src={ele.url} onClick={this.clickHandler} className={styles.image}/>
 			})
 		  }
 

@@ -10,7 +10,6 @@ app.use(express.static('./public'));
 
 
 app.post('/photos', (req, res) => {
-  console.log(req.body.result);
   db.getAllPictures(req.body.result, (data) => {
 	  res.send(data);
   });
