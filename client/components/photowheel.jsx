@@ -30,10 +30,12 @@ getData() {
 }
 
 	render() {
+		console.log(styles);
 		return (
-	  <div>
+	  <div className="hi">
+	  <p className={styles.test}>test</p>
 		  {this.state.photos.map((ele) => {
-			  <img src={ele}/>
+			  return <img src={ele.url} className={styles.image}/>
 			})
 		  }
 
