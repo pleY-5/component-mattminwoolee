@@ -20,7 +20,7 @@ db.connect((err) => {
 var getAllPictures = function(restaurant, cb) {
 	db.query(`SELECT url FROM pictures where restaurant = ${restaurant}`, (err, result) => {
 	  if(err) {
-	  	console.log(err);
+	  	cb(err);
 	  }	else {
 	  	cb(result);
 	  }

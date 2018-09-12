@@ -9,12 +9,18 @@ app.use(express.static('./public'));
 
 
 
-app.post('/photos', (req, res) => {
-  db.getAllPictures(req.body.result, (data) => {
-	  res.send(data);
+app.get('/photos', (req, res) => {
+  db.getAllPictures(req.query.id, (err, data) => {
+  	if(err) {
+  		res.send(err);
+  	} else {
+		  res.send(data); 		
+  	}
   });
 });
 
 var port = process.env.PORT || 3001;
 
 app.listen(port, () => console.log("Connected on port 3001"));
+
+module.exports.app = app;

@@ -22,7 +22,6 @@ db.query("INSERT INTO users (name, elite, friends, reviews, avatar) VALUES ?", [
 });
 }
 
-console.log(photoData)
 var finalSeed = function() {
 	db.query("INSERT INTO pictures (url, postdate, caption, user, restaurant) VALUES ?", [data.photoData], (err) => {
 	  if(err) {

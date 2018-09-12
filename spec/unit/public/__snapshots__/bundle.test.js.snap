@@ -1,20 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Photowheel component renders correctly 1`] = `
-<div
-  className="hi"
->
-  <p
-    className="test"
-  >
-    test
-  </p>
-</div>
-`;
-
 exports[`Photowheel component setup renders correctly 1`] = `
 <div
   className="hi"
+  onClick={[Function]}
 >
   <p
     className="test"

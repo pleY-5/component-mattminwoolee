@@ -18,14 +18,17 @@ componentWillMount() {
 
 getData() {
   $.ajax({
-    method: 'POST',
+    method: 'GET',
     url: '/photos',
-    data: {result: this.state.restaurant},
+    data: {id: this.state.restaurant},
     success: (data) => {
       this.setState({
         photos: data
       });
-    }
+    },
+    error: (err) => (
+      console.log(err)
+    )
   });
 
 }
@@ -34,15 +37,27 @@ clickHandler() {
   console.log('hi');	
 }
 
+onHover() {
+
+}
+
 	render() {
 		return (
-	  <div className="hi">test
+	  <div className={styles.container} onClick={() => this.props.clickHandler()}>
 	  <p className={styles.test}>test</p>
-		  {this.state.photos.map((ele) => {
-			  return <img src={ele.url} onClick={this.clickHandler} className={styles.image}/>
+	  <br></br>
+	    <div className={styles.container}>
+		  {this.state.photos.map((ele, i) => {
+		  	if(i <= 2) {
+		  		if(i === 1) {
+				    return <img src={ele.url} onClick={this.clickHandler} className={styles.image}/>
+		  		} else {
+				    return <img src={ele.url} onClick={this.clickHandler} className={styles.image}/>	  			
+		  		}
+		  	} 
 			})
 		  }
-
+      </div>
 	  </div>
 		);
   } 

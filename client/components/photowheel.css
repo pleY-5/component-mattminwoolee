@@ -1,6 +1,27 @@
+.container {
+	height:220px;
+	display: flex;
+	align-content: center;
+	position: relative;
+}
+
 .image {
-	width:100px;
-	height:100px;
+	width:220px;
+	height:220px;
+}
+
+.image:hover {
+	width:250px;
+	height:250px;
+	z-index: 1;
+	position: relative;
+}
+
+.largeImage:hover {
+	width:250px;
+	height:250px;
+	z-index: 1;
+	position: relative;
 }
 
 .test {

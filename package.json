@@ -12,7 +12,8 @@
     "react-dev": "webpack -d --watch",
     "seed": "mysql -u root -pnick < schema.sql && node database/seed.js",
     "seed1": "node database/seed2.js",
-    "test": "jest --coverage"
+    "test": "jest",
+    "update": "jest --updateSnapshot"
   },
   "dependencies": {
     "express": "^4.16.3",
@@ -45,6 +46,7 @@
     "react-test-renderer": "^16.5.0",
     "sinon": "^6.2.0",
     "style-loader": "^0.23.0",
+    "supertest": "^3.3.0",
     "webpack-cli": "^3.1.0"
   }
 }
