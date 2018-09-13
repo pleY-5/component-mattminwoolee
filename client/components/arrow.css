@@ -1,0 +1,33 @@
+.arrowleft {
+  display: inline-block;
+  position: relative;
+  width: 35px;
+  height: 40px;
+  content: '';
+  background-image: url(./greyleftarrow.png);
+}
+
+.arrowleft:before {
+  content: '';
+  background-image: url(./greyleftarrow.png);
+
+
+}
+
+.arrowright {
+	width: 35px;
+  height: 40px;
+  display: inline-block;
+  position: relative;
+   content: '';
+  background-image: url(./greyleftarrow.png);
+}
+
+.arrowright:before {
+  content: '';
+  background-image: url(./greyrightarrow.png);
+
+
+
+
+}

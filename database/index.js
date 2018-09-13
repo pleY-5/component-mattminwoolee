@@ -18,7 +18,7 @@ db.connect((err) => {
 });
 
 var getAllPictures = function(restaurant, cb) {
-	db.query(`SELECT url FROM pictures where restaurant = ${restaurant}`, (err, result) => {
+	db.query(`SELECT url, postdate, caption FROM pictures where restaurant = ${restaurant}`, (err, result) => {
 	  if(err) {
 	  	cb(err);
 	  }	else {

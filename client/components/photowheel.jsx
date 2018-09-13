@@ -1,15 +1,23 @@
 import React from 'react';
 import $ from 'jquery';
 import styles from './photowheel.css';
+import Arrow from './arrow.jsx';
 
 class PhotoWheel extends React.Component {
 	constructor(props) {
 		super(props);
     this.state = {
     	photos: [],
-    	restaurant: 4
+    	restaurant: 4,
+    	0: false,
+    	1: false,
+    	2: false,
+    	index: 0
     }
     this.clickHandler = this.clickHandler.bind(this);
+    this.toggleHover = this.toggleHover.bind(this);
+    this.previousPicture = this.previousPicture.bind(this);
+    this.nextPicture = this.nextPicture.bind(this);
 	}
 
 componentWillMount() {
@@ -37,26 +45,67 @@ clickHandler() {
   console.log('hi');	
 }
 
-onHover() {
-
+toggleHover(e) {
+	const id = e.target.id;
+  this.setState({
+    [id]: !this.state[id]
+  })
 }
+
+previousPicture() {
+  var curr = this.state.index;
+  var length = this.state.photos.length
+
+  if (curr === 0) {
+  	return;
+  }
+
+  var index = 0;
+  if (curr > 0) {
+    index = curr - 1;
+  } else {
+    index = 0;	
+  }
+  // const index = curr > 0 ? curr - 1 : 0 
+
+  this.setState({
+    index: index 	
+  })  
+}
+
+nextPicture() {
+  var curr = this.state.index;
+  var length = this.state.photos.length
+  if (curr === length-1) {
+  	return;
+  }
+  var index = 0;
+  if (curr < length) {
+  	index = curr + 1;
+  } 
+
+  this.setState({
+    index: index 	
+  })  
+}
+
 
 	render() {
 		return (
-	  <div className={styles.container} onClick={() => this.props.clickHandler()}>
-	  <p className={styles.test}>test</p>
-	  <br></br>
-	    <div className={styles.container}>
-		  {this.state.photos.map((ele, i) => {
-		  	if(i <= 2) {
-		  		if(i === 1) {
-				    return <img src={ele.url} onClick={this.clickHandler} className={styles.image}/>
-		  		} else {
-				    return <img src={ele.url} onClick={this.clickHandler} className={styles.image}/>	  			
-		  		}
-		  	} 
-			})
-		  }
+	  <div className={styles.header} onClick={() => this.props.clickHandler()}>Yelp<br></br>
+	    <div className={styles.test}>Restaurant Name</div>
+	    <br></br>
+	      <div className={styles.container}>
+		    {this.state.photos.map((ele, i) => {
+		  	  if(i <= 2) {
+		  	  	if(i === 1) {
+				      return <span><Arrow direction="left" clickHandler={this.previousPicture}/><img onMouseEnter={(e) => this.toggleHover(e)} onMouseLeave={(e) => this.toggleHover(e)} id={i} src={this.state.photos[this.state.index].url} caption={ele.caption} postdate={ele.postdate} onClick={this.clickHandler} className={styles.image}/><Arrow direction="right" clickHandler={this.nextPicture}/><span className={styles.span}>hi</span></span>
+		  		  } {/*else {
+				      return <span><img onMouseEnter={(e) => this.toggleHover(e)} onMouseLeave={(e) => this.toggleHover(e)} id={i} src={ele.url} caption={ele.caption} postdate={ele.postdate} onClick={this.clickHandler} className={styles.image}/><span className={styles.span}>hi</span></span>  			
+		  		  }*/}
+		  	  } 
+			  })
+		    }
       </div>
 	  </div>
 		);

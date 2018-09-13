@@ -2,13 +2,17 @@
 
 exports[`Photowheel component setup renders correctly 1`] = `
 <div
-  className="hi"
+  className="container"
   onClick={[Function]}
 >
-  <p
+  <div
     className="test"
   >
     test
-  </p>
+  </div>
+  <br />
+  <div
+    className="container"
+  />
 </div>
 `;

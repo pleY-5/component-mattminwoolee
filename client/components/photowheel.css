@@ -1,23 +1,32 @@
+.header {
+	display:block;
+	height:200px;
+	padding-top: 30px;
+}
+
 .container {
 	height:220px;
-	display: flex;
 	align-content: center;
 	position: relative;
+}
+
+.span {
+	display: none;
 }
 
 .image {
 	width:220px;
 	height:220px;
+	transition: all .15s ease-in-out;
 }
 
 .image:hover {
-	width:250px;
-	height:250px;
 	z-index: 1;
 	position: relative;
+	transform: scale(1.1);
 }
 
-.largeImage:hover {
+.largeImage {
 	width:250px;
 	height:250px;
 	z-index: 1;
@@ -25,7 +34,8 @@
 }
 
 .test {
-	color: red;
-	font-weight: bold;
+	padding-top: 15px;
+	display: flex;
+  flex-direction: column;
 }
 

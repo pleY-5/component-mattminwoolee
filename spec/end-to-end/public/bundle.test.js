@@ -29,7 +29,7 @@ describe('my first test', () => {
 	test('test to see if div with hi was found', async () => {
     var div = '.photowheel__test___2-916';
     var html = await page.$eval(div, e => e.textContent);
-    expect(html).toEqual('test');
+    expect(html).toEqual('Restaurant Name');
 	});
 
 });
