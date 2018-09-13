@@ -1,0 +1,46 @@
+.spanHide {
+	bottom: -10px;
+	right: 0;
+	left: 0;
+	height:50px;
+	overflow: hidden;
+  position: absolute;
+  visibility: hidden;
+  opacity: 0;
+  color: #fff;
+  transition: opacity .2s, visibility .2s;
+  background: rgba(0,0,0,0.5);
+}
+
+.spanShow {
+	width:243px;
+	bottom: -11px;
+	right: 0;
+	left: -11px;
+	height:50px;
+	overflow: hidden;
+  position: absolute;
+  visibility: visible;
+  opacity: 1;
+  color: #fff;
+  transition: opacity .2s, visibility .2s;
+  background: rgba(0,0,0,0.5);
+}
+
+.photoContainer {
+	position: relative;
+	width:220px;
+	height:220px;
+}
+
+.image {
+	width:220px;
+	height:220px;
+	transition: all .15s ease-in-out;
+	cursor: pointer;
+}
+
+.image:hover {
+	position: relative;
+	transform: scale(1.1);
+}

@@ -22,7 +22,7 @@ var getAllPictures = function(restaurant, cb) {
 	  if(err) {
 	  	cb(err);
 	  }	else {
-	  	cb(result);
+	  	cb(null, result);
 	  }
 	});
 }

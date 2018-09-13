@@ -12,22 +12,6 @@
 	position: relative;
 }
 
-.span {
-	display: none;
-}
-
-.image {
-	width:220px;
-	height:220px;
-	transition: all .15s ease-in-out;
-	cursor: pointer;
-}
-
-.image:hover {
-	position: relative;
-	transform: scale(1.1);
-}
-
 .largeImage {
 	width:250px;
 	height:250px;
