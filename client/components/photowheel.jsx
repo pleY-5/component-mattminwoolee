@@ -55,18 +55,15 @@ toggleHover(e) {
 previousPicture() {
   var curr = this.state.index;
   var length = this.state.photos.length
-
   if (curr === 0) {
   	return;
   }
-
   var index = 0;
   if (curr > 0) {
     index = curr - 1;
   } else {
     index = 0;	
   }
-  // const index = curr > 0 ? curr - 1 : 0 
 
   this.setState({
     index: index 	
@@ -76,7 +73,7 @@ previousPicture() {
 nextPicture() {
   var curr = this.state.index;
   var length = this.state.photos.length
-  if (curr === length-1) {
+  if (curr === length-3) {
   	return;
   }
   var index = 0;
@@ -97,14 +94,16 @@ nextPicture() {
 	    <br></br>
 	      <div className={styles.container}>
 		    {this.state.photos.map((ele, i) => {
-		  	  if(i <= 2) {
-		  	  	if(i === 1) {
-				      return <span><Arrow direction="left" clickHandler={this.previousPicture}/><img onMouseEnter={(e) => this.toggleHover(e)} onMouseLeave={(e) => this.toggleHover(e)} id={i} src={this.state.photos[this.state.index].url} caption={ele.caption} postdate={ele.postdate} onClick={this.clickHandler} className={styles.image}/><Arrow direction="right" clickHandler={this.nextPicture}/><span className={styles.span}>hi</span></span>
-		  		  } {/*else {
-				      return <span><img onMouseEnter={(e) => this.toggleHover(e)} onMouseLeave={(e) => this.toggleHover(e)} id={i} src={ele.url} caption={ele.caption} postdate={ele.postdate} onClick={this.clickHandler} className={styles.image}/><span className={styles.span}>hi</span></span>  			
-		  		  }*/}
-		  	  } 
-			  })
+		  	  if (i <= 2) {
+		  	  	if (i === 0) {
+				      return <span><Arrow direction="left" clickHandler={this.previousPicture}/><img onMouseEnter={(e) => this.toggleHover(e)} onMouseLeave={(e) => this.toggleHover(e)} id={i} src={this.state.photos[this.state.index].url} caption={ele.caption} postdate={ele.postdate} onClick={this.clickHandler} className={styles.image}/><span className={styles.span}>hi</span></span>
+		  		  } else if (i === 1) {
+				      return <span><img onMouseEnter={(e) => this.toggleHover(e)} onMouseLeave={(e) => this.toggleHover(e)} id={i} src={this.state.photos[this.state.index + 1].url} caption={ele.caption} postdate={ele.postdate} onClick={this.clickHandler} className={styles.image}/><span className={styles.span}>hi</span></span>  			
+		  		  } else if (i === 2) {
+				      return <span><img onMouseEnter={(e) => this.toggleHover(e)} onMouseLeave={(e) => this.toggleHover(e)} id={i} src={this.state.photos[this.state.index + 2].url} caption={ele.caption} postdate={ele.postdate} onClick={this.clickHandler} className={styles.image}/><Arrow direction="right" clickHandler={this.nextPicture}/><span className={styles.span}>hi</span></span>
+		  	    }
+			    }
+		    })
 		    }
       </div>
 	  </div>
