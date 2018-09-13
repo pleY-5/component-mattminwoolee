@@ -53,39 +53,28 @@ toggleHover(e) {
 }
 
 previousPicture() {
-  var curr = this.state.index;
-  var length = this.state.photos.length
-  if (curr === 0) {
+	var index = this.state.index;
+  var length = this.state.photos.length;
+  if (index === 0) {
   	return;
   }
-  var index = 0;
-  if (curr > 0) {
-    index = curr - 1;
-  } else {
-    index = 0;	
-  }
-
+  index -= 1;
   this.setState({
     index: index 	
   })  
 }
 
 nextPicture() {
-  var curr = this.state.index;
+	var index = this.state.index;
   var length = this.state.photos.length
-  if (curr === length-3) {
+  if (index === length-3) {
   	return;
   }
-  var index = 0;
-  if (curr < length) {
-  	index = curr + 1;
-  } 
-
+  index += 1;
   this.setState({
     index: index 	
   })  
 }
-
 
 	render() {
 		return (

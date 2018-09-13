@@ -1,19 +1,50 @@
 .arrowleft {
   display: inline-block;
-  position: relative;
+  position: fixed;
+  z-index: 1;
   width: 35px;
   height: 40px;
-
+  cursor: pointer;
+  position: absolute;
+  top: 85px;
+  left: 360px;
   background-image: url(./greyleftarrow.png);
+}
+
+.arrowleft:hover {
+  display: inline-block;
+  position: fixed;
+  z-index: 1;
+  width: 35px;
+  height: 40px;
+  cursor: pointer;
+  position: absolute;
+  top: 85px;
+  left: 360px;
+  background-image: url(./whiteleftarrow.png);
 }
 
 
 .arrowright {
 	width: 35px;
   height: 40px;
+  position: absolute;
+  top: 85px;
+  right: 360px;
   display: inline-block;
-  position: relative;
-
-  background-image: url(./greyleftarrow.png);
+  cursor: pointer;
+  background-image: url(./greyrightarrow.png);
 }
+
+.arrowright:hover {
+	width: 35px;
+  height: 40px;
+  position: absolute;
+  top: 85px;
+  right: 360px;
+  display: inline-block;
+  cursor: pointer;
+  background-image: url(./whiterightarrow.png);
+}
+
 

@@ -6,7 +6,9 @@
 
 .container {
 	height:220px;
-	align-content: center;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 	position: relative;
 }
 
@@ -18,10 +20,10 @@
 	width:220px;
 	height:220px;
 	transition: all .15s ease-in-out;
+	cursor: pointer;
 }
 
 .image:hover {
-	z-index: 1;
 	position: relative;
 	transform: scale(1.1);
 }
@@ -29,7 +31,6 @@
 .largeImage {
 	width:250px;
 	height:250px;
-	z-index: 1;
 	position: relative;
 }
 
