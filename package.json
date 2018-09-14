@@ -9,7 +9,11 @@
   },
   "scripts": {
     "start": "nodemon server/index.js",
-    "react-dev": "webpack -d --watch"
+    "react-dev": "webpack -d --watch",
+    "seed": "mysql -u root -pnick < schema.sql && node database/seed.js",
+    "seed1": "node database/seed2.js",
+    "test": "jest",
+    "update": "jest --updateSnapshot"
   },
   "dependencies": {
     "express": "^4.16.3",
@@ -24,9 +28,25 @@
     "@babel/core": "^7.0.0",
     "@babel/preset-env": "^7.0.0",
     "@babel/preset-react": "^7.0.0",
+    "babel-jest": "^23.6.0",
     "babel-loader": "^8.0.2",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.26.2",
+    "babel-plugin-transform-react-jsx": "^6.24.1",
+    "bluebird": "^3.5.2",
+    "css-loader": "^1.0.0",
+    "enzyme": "^3.6.0",
+    "enzyme-adapter-react-16": "^1.5.0",
     "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor",
     "faker": "^4.1.0",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^23.6.0",
+    "jquery": "^3.3.1",
+    "mysql": "^2.16.0",
+    "puppeteer": "^1.8.0",
+    "react-test-renderer": "^16.5.0",
+    "sinon": "^6.2.0",
+    "style-loader": "^0.23.0",
+    "supertest": "^3.3.0",
     "webpack-cli": "^3.1.0"
   }
 }

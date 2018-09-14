@@ -1,32 +1,42 @@
-var mongoose = require('mongoose');
-var data = require('../YelpData.js');
-mongoose.connect('mongodb://localhost/yelpreactor');
+var mysql = require('mysql');
 
-var restaurantSchema = new mongoose.Schema({
-  name: String,
-  photos: Array
+
+var db = mysql.createConnection({
+	multipleStatements: true,
+  host: 'localhost',
+  user: 'root',
+  password: 'nick',
+  database: 'photos'
 });
 
-var Restaurant = mongoose.model('Restaurant', restaurantSchema);
 
-for(var i = 0; i < data.businessNames.length; i++) {
-  var random = Math.floor(Math.random() * data.photos.length); 
-  var each = new Restaurant({ name: data.businessNames[i], photos: data.photos[random] });
-  each.save();
-}
-
-
-var userSchema = new mongoose.Schema({
-  name: String,
-  elite: Boolean,
-  friends: Number,
-  reviews: Number
+db.connect((err) => {
+	if (err) {
+		throw err;
+	}
+	console.log('connected to db');
 });
 
-var User = mongoose.model('User', userSchema);
-
-for(var i = 0; i < data.users.length; i++) {
-	var eachUser = new User({ name: data.users[i].name, elite: data.users[i].elite, friends: data.users[i].friends, reviews: data.users[i].reviews})
-  eachUser.save();
+var getAllPictures = function(restaurant, cb) {
+	db.query(`SELECT url, postdate, caption, user FROM pictures where restaurant = ${restaurant}`, (err, result) => {
+	  if(err) {
+	  	cb(err);
+	  }	else {
+	  	cb(null, result);
+	  }
+	});
 }
 
+var getAllUsers = function(users, cb) {
+	db.query(`SELECT * FROM users where user_id in (${users})`, (err, result) => {
+	  if(err) {
+	  	cb(err);
+	  }	else {
+	  	cb(null, result);
+	  }
+	});
+}
+
+module.exports.getAllUsers = getAllUsers;
+module.exports.getAllPictures = getAllPictures;
+module.exports.db = db;

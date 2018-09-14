@@ -1,0 +1,60 @@
+.description {
+  color: rgba(225,225,225,0.9);
+  font-weight: normal;
+  white-space: nowrap;
+  font-size: 85%;
+  padding-left: 2px;
+}
+
+
+.avatar {
+	padding-left: 5px;
+	width: 25px;
+	height: 40px;
+	padding-right: 3px;
+}
+
+.spanHide {
+  visibility: hidden;
+  opacity: 0;
+}
+
+.spanShow {
+	font-size:90%;
+	width:243px;
+	bottom: -11px;
+	right: 0;
+	left: -11px;
+	height:50px;
+	overflow: hidden;
+  position: absolute;
+  visibility: visible;
+  opacity: 1;
+  color: #fff;
+  transition: opacity .2s, visibility .2s;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  text-shadow: 1px 1px 1px rgba(0,0,0,0.5);
+
+}
+
+.photoContainer {
+	position: relative;
+	width:220px;
+	height:220px;
+}
+
+.image {
+	width:220px;
+	height:220px;
+	transition: all .15s ease-in-out;
+	cursor: pointer;
+}
+
+.image:hover {
+	position: relative;
+	transform: scale(1.1);
+	z-index: 1;
+}
