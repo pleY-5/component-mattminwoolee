@@ -11,10 +11,14 @@ class PhotoWheel extends React.Component {
     	photos: [],
     	users: [],
     	restaurant: 4,
-    	index: 0
+    	index: 0,
+      0: false,
+      1: false,
+      2: false
     }
     this.previousPicture = this.previousPicture.bind(this);
     this.nextPicture = this.nextPicture.bind(this);
+    this.defaultPicture = this.defaultPicture.bind(this);
 	}
 
 componentWillMount() {
@@ -75,7 +79,15 @@ nextPicture() {
   })  
 }
 
+defaultPicture(e) {
+  this.setState({
+    [e.target.id]: !this.state[e.target.id]
+  });
+}
+
+
 	render() {
+    var shouldDefault = !this.state['0'] && !this.state['1'] && !this.state['2'] ? true : false
 		return (
 	  <div className={styles.header} onClick={() => this.props.clickHandler()}>Yelp<br></br>
 	    <div className={styles.test}>Restaurant Name</div>
@@ -84,11 +96,11 @@ nextPicture() {
 		    {this.state.photos.map((ele, i) => {
 		  	  if (i <= 2) {
 		  	  	if (i === 0) {
-				      return <span><Arrow direction="left" clickHandler={this.previousPicture}/><Photo photo={this.state.photos[this.state.index]} users={this.state.users}/></span>
+				      return <span><Arrow direction="left" clickHandler={this.previousPicture}/><Photo num={i} shouldDefault={shouldDefault} photo={this.state.photos[this.state.index]} users={this.state.users} defaultPicture={this.defaultPicture}/></span>
 		  		  } else if (i === 1) {
-				      return <span><Photo photo={this.state.photos[this.state.index + 1]} users={this.state.users}/></span>  			
+				      return <span><Photo num={i} shouldDefault={shouldDefault} photo={this.state.photos[this.state.index + 1]} users={this.state.users} middle={true} defaultPicture={this.defaultPicture}/></span>  			
 		  		  } else if (i === 2) {
-				      return <span><Photo photo={this.state.photos[this.state.index + 2]} users={this.state.users}/><Arrow direction="right" clickHandler={this.nextPicture}/></span>
+				      return <span><Photo num={i} shouldDefault={shouldDefault} photo={this.state.photos[this.state.index + 2]} users={this.state.users} defaultPicture={this.defaultPicture}/><Arrow direction="right" clickHandler={this.nextPicture}/></span>
 		  	    }
 			    }
 		    })

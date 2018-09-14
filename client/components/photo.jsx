@@ -5,7 +5,8 @@ class Photo extends React.Component {
   constructor(props) {
   	super(props);
   	this.state = {
-  	  caption: false
+  	  caption: false,
+      once: true
   	}
   }
 
@@ -13,6 +14,16 @@ class Photo extends React.Component {
   	this.setState({
   		caption: !this.state.caption
   	})
+  }
+
+  defaultHover() {
+    if(once) {
+      this.setState({
+        once: false
+      })
+    } else {
+      this.toggleHover();
+    }
   }
 
   render() {
@@ -23,21 +34,31 @@ class Photo extends React.Component {
         break;
   		}
   	}
-  	var displayCaption = this.state.caption ? styles.spanShow : styles.spanHide
+  	var displayCaption = this.state.caption ? styles.spanShow : styles.spanHide;
+    var imageAfter = this.state.caption ? styles.imageAfter : styles.image;
+
+
 	  if(this.props.users.length === 0) {
 		  return (
 		  	<div className={styles.photoContainer}>
-			    <img onMouseEnter={() => this.toggleHover()} onMouseLeave={() => this.toggleHover()} src={this.props.photo.url} 
-			    className={styles.image}/><span className={displayCaption}>{this.props.photo.caption}</span>
+			    <img id={this.props.num} onMouseEnter={(e) => {this.toggleHover(); this.props.defaultPicture(e)}} onMouseLeave={(e) => {this.toggleHover(); this.props.defaultPicture(e)}} src={this.props.photo.url} 
+			    className={imageAfter}/><span className={displayCaption}>{this.props.photo.caption}</span>
 		    </div>
 		  );
-    } else {
+    } else if (this.props.middle && this.props.shouldDefault) {
 	    return (
 		  	<div className={styles.photoContainer}>
-			    <img onMouseEnter={() => this.toggleHover()} onMouseLeave={() => this.toggleHover()} src={this.props.photo.url} 
-			    className={styles.image}/><span className={displayCaption}><img className={styles.avatar} src={this.props.users[userIndex].avatar}/>{this.props.photo.caption} {" "}<span className={styles.description}>by {this.props.users[userIndex].name}</span></span>
+			    <img id={this.props.num} onMouseEnter={(e) => {this.defaultHover(); this.props.defaultPicture(e)}} onMouseLeave={(e) => {this.defaultHover(); this.props.defaultPicture(e)}} src={this.props.photo.url} 
+			    className={styles.imageAfter}/><span className={styles.spanShow}><img className={styles.avatar} src={this.props.users[userIndex].avatar}/>{this.props.photo.caption} {" "}<span className={styles.description}>by {this.props.users[userIndex].name}</span></span>
 		    </div>
 	    );
+    } else {
+      return (
+        <div className={styles.photoContainer}>
+          <img id={this.props.num} onMouseEnter={(e) => {this.toggleHover(); this.props.defaultPicture(e)}} onMouseLeave={(e) => {this.toggleHover(); this.props.defaultPicture(e)}} src={this.props.photo.url} 
+          className={imageAfter}/><span className={displayCaption}><img className={styles.avatar} src={this.props.users[userIndex].avatar}/>{this.props.photo.caption} {" "}<span className={styles.description}>by {this.props.users[userIndex].name}</span></span>
+        </div>
+      );
     }
   }
 
