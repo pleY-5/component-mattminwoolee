@@ -19,6 +19,16 @@ app.get('/photos', (req, res) => {
   });
 });
 
+app.get('/users', (req, res) => {
+  db.getAllUsers(req.query.users, (err, data) => {
+  	if(err) {
+  		res.send(err);
+  	} else {
+		  res.send(data); 		
+  	}
+  });
+});
+
 var port = process.env.PORT || 3001;
 
 app.listen(port, () => console.log("Connected on port 3001"));

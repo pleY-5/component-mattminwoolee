@@ -9,6 +9,7 @@ class PhotoWheel extends React.Component {
 		super(props);
     this.state = {
     	photos: [],
+    	users: [],
     	restaurant: 4,
     	index: 0
     }
@@ -29,12 +30,25 @@ getData() {
       this.setState({
         photos: data
       });
+      data = data.map(ele => {return ele.user});
+      $.ajax({
+		    method: 'GET',
+		    url: '/users',
+		    data: {users: data},
+		    success: (result) => {
+		      this.setState({
+		        users: result
+		      });
+		    },
+		    error: (err) => (
+		      console.log(err)
+		    )
+      });
     },
     error: (err) => (
       console.log(err)
     )
   });
-
 }
 
 previousPicture() {
@@ -70,11 +84,11 @@ nextPicture() {
 		    {this.state.photos.map((ele, i) => {
 		  	  if (i <= 2) {
 		  	  	if (i === 0) {
-				      return <span><Arrow direction="left" clickHandler={this.previousPicture}/><Photo source={this.state.photos[this.state.index].url} photo={this.state.photos[this.state.index]}/></span>
+				      return <span><Arrow direction="left" clickHandler={this.previousPicture}/><Photo photo={this.state.photos[this.state.index]} users={this.state.users}/></span>
 		  		  } else if (i === 1) {
-				      return <span><Photo source={this.state.photos[this.state.index + 1].url} photo={this.state.photos[this.state.index + 1]}/></span>  			
+				      return <span><Photo photo={this.state.photos[this.state.index + 1]} users={this.state.users}/></span>  			
 		  		  } else if (i === 2) {
-				      return <span><Photo source={this.state.photos[this.state.index + 2].url} photo={this.state.photos[this.state.index + 2]}/><Arrow direction="right" clickHandler={this.nextPicture}/></span>
+				      return <span><Photo photo={this.state.photos[this.state.index + 2]} users={this.state.users}/><Arrow direction="right" clickHandler={this.nextPicture}/></span>
 		  	    }
 			    }
 		    })
