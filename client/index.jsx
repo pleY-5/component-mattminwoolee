@@ -1,5 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from '/components/app.jsx'
+import PhotoWheel from './components/photowheel.jsx'
 
-ReactDOM.render(<App />, document.getElementById('photo-wheel'));
+ReactDOM.render(<PhotoWheel />, document.getElementById('photo-wheel'));

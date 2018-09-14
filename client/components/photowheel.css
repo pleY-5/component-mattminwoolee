@@ -1,0 +1,26 @@
+.header {
+	display:block;
+	height:200px;
+	padding-top: 30px;
+}
+
+.container {
+	height:220px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+}
+
+.largeImage {
+	width:250px;
+	height:250px;
+	position: relative;
+}
+
+.test {
+	padding-top: 15px;
+	display: flex;
+  flex-direction: column;
+}
+

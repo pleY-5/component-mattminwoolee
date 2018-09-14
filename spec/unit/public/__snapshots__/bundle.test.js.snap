@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Photowheel component setup renders correctly 1`] = `
+<div
+  className="header"
+  onClick={[Function]}
+>
+  Yelp
+  <br />
+  <div
+    className="test"
+  >
+    Restaurant Name
+  </div>
+  <br />
+  <div
+    className="container"
+  />
+</div>
+`;
