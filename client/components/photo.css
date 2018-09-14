@@ -30,6 +30,9 @@
 }
 
 .spanShow {
+	-webkit-user-select: none; /* Chrome/Safari */        
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none;  /* IE */
 	z-index: 2;
 	font-size:90%;
 	width:243px;
@@ -62,13 +65,10 @@
 	height:220px;
 	transition: all .15s ease-in-out;
 	cursor: pointer;
+	-webkit-user-select: none; /* Chrome/Safari */        
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none;  /* IE */
 }
-
-/*.image:hover {
-	position: relative;
-	transform: scale(1.1);
-	z-index: 1;
-}*/
 
 .imageAfter {
 	width:220px;
@@ -78,4 +78,7 @@
 	position: relative;
 	transform: scale(1.1);
 	z-index: 1;
+	-webkit-user-select: none; /* Chrome/Safari */        
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE */
 }
