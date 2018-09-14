@@ -6,7 +6,6 @@
   padding-left: 2px;
 }
 
-
 .avatar {
 	padding-left: 5px;
 	width: 25px;
@@ -20,6 +19,7 @@
 }
 
 .spanShow {
+	z-index: 2;
 	font-size:90%;
 	width:243px;
 	bottom: -11px;
