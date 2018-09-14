@@ -16,6 +16,17 @@
 .spanHide {
   visibility: hidden;
   opacity: 0;
+  z-index: -1;
+  width:243px;
+	bottom: -11px;
+	right: 0;
+	left: -11px;
+	height:50px;
+	position: absolute;
+	display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  text-shadow: 1px 1px 1px rgba(0,0,0,0.5);
 }
 
 .spanShow {
@@ -53,7 +64,17 @@
 	cursor: pointer;
 }
 
-.image:hover {
+/*.image:hover {
+	position: relative;
+	transform: scale(1.1);
+	z-index: 1;
+}*/
+
+.imageAfter {
+	width:220px;
+	height:220px;
+	transition: all .15s ease-in-out;
+	cursor: pointer;
 	position: relative;
 	transform: scale(1.1);
 	z-index: 1;
