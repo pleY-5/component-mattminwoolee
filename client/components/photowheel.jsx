@@ -11,15 +11,12 @@ class PhotoWheel extends React.Component {
     this.state = {
     	photos: [],
     	users: [],
-    	restaurant: 4,
+    	restaurant: 16,
     	index: 0,
       0: false,
       1: false,
       2: false,
       isModalOpen: false,
-      modal0: false,
-      modal1: false,
-      modal2: false,
       currentModalPicture: 0
     }
     this.previousPicture = this.previousPicture.bind(this);
@@ -27,7 +24,8 @@ class PhotoWheel extends React.Component {
     this.defaultPicture = this.defaultPicture.bind(this);
     this.showModal = this.showModal.bind(this);
     this.detectModalNumber = this.detectModalNumber.bind(this);
-    this.closeModal = this.closeModal.bind(this);
+    this.previousModalPicture = this.previousModalPicture.bind(this);
+    this.nextModalPicture = this.nextModalPicture.bind(this);
 	}
 
 componentWillMount() {
@@ -63,7 +61,7 @@ getData() {
     )
   });
 }
-
+//----------Carousel Pictures--------------
 previousPicture() {
 	var index = this.state.index;
   var length = this.state.photos.length;
@@ -78,7 +76,7 @@ previousPicture() {
 
 nextPicture() {
 	var index = this.state.index;
-  var length = this.state.photos.length
+  var length = this.state.photos.length;
   if (index === length-3) {
   	return;
   }
@@ -94,24 +92,39 @@ defaultPicture(e) {
   });
 }
 
+//-----------------Modal Picture-----------
+previousModalPicture() {
+  var index = this.state.currentModalPicture;
+  var length = this.state.photos.length;
+  if (index === 0) {
+    return;
+  }
+  index -= 1;
+  this.setState({
+    currentModalPicture: index 
+  })  
+}
+
+nextModalPicture() {
+  var index = this.state.currentModalPicture;
+  var length = this.state.photos.length;
+  if (index === length-1) {
+    return;
+  }
+  index += 1;
+  this.setState({
+    currentModalPicture: index
+  })  
+}
+
 showModal(e) {
   this.setState({
     isModalOpen: !this.state.isModalOpen
   })
 }
 
-closeModal(e) {
-  this.setState({
-    isModalOpen: !this.state.isModalOpen,
-    modal0: false,
-    modal1: false,
-    modal2: false
-  })
-}
-
 detectModalNumber(e) {
   var num = parseInt(e.target.id) + this.state.index;
-  console.log(num);
   this.setState({
     currentModalPicture: num
   })
@@ -148,7 +161,8 @@ detectModalNumber(e) {
   		    }
         </div>
   	  </div>
-      <Modal closeModal={this.closeModal} isOpen={this.state.isModalOpen} photos={this.state.photos} index={this.state.currentModalPicture} zero={this.state['modal0']} one={this.state['modal1']} two={this.state['modal2']}/>
+      <Modal prevPic={this.previousModalPicture} nextPic={this.nextModalPicture} closeModal={this.showModal} isOpen={this.state.isModalOpen} 
+        photos={this.state.photos} users={this.state.users} index={this.state.currentModalPicture}/>
     </div>
 		);
   } 
