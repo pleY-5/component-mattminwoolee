@@ -22,7 +22,13 @@ var randomizeInt = (int) => {
 }
 
 for(var i = 0; i < 100; i++) {
-  users.push([faker.name.findName(), isElite(), randomizeInt(1300), randomizeInt(300), faker.image.avatar()]);
+  var name = faker.name.findName()
+  var space = name.indexOf(' ');
+  var str = name.substr(0, space + 2);
+  var newName = str.split('')
+  newName.push('.')
+  newName = newName.join('');
+  users.push([newName, isElite(), randomizeInt(1300), randomizeInt(300), faker.image.avatar()]);
 }
 
 for(var i = 0; i < businessNames.length; i++) {
