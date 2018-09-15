@@ -3,6 +3,7 @@ import $ from 'jquery';
 import styles from './photowheel.css';
 import Arrow from './arrow.jsx';
 import Photo from './photo.jsx';
+import Modal from './modal.jsx';
 
 class PhotoWheel extends React.Component {
 	constructor(props) {
@@ -14,11 +15,19 @@ class PhotoWheel extends React.Component {
     	index: 0,
       0: false,
       1: false,
-      2: false
+      2: false,
+      isModalOpen: false,
+      modal0: false,
+      modal1: false,
+      modal2: false,
+      currentModalPicture: 0
     }
     this.previousPicture = this.previousPicture.bind(this);
     this.nextPicture = this.nextPicture.bind(this);
     this.defaultPicture = this.defaultPicture.bind(this);
+    this.showModal = this.showModal.bind(this);
+    this.detectModalNumber = this.detectModalNumber.bind(this);
+    this.closeModal = this.closeModal.bind(this);
 	}
 
 componentWillMount() {
@@ -63,7 +72,7 @@ previousPicture() {
   }
   index -= 1;
   this.setState({
-    index: index 	
+    index: index, 	
   })  
 }
 
@@ -75,7 +84,7 @@ nextPicture() {
   }
   index += 1;
   this.setState({
-    index: index 	
+    index: index,
   })  
 }
 
@@ -85,28 +94,62 @@ defaultPicture(e) {
   });
 }
 
+showModal(e) {
+  this.setState({
+    isModalOpen: !this.state.isModalOpen
+  })
+}
+
+closeModal(e) {
+  this.setState({
+    isModalOpen: !this.state.isModalOpen,
+    modal0: false,
+    modal1: false,
+    modal2: false
+  })
+}
+
+detectModalNumber(e) {
+  var num = parseInt(e.target.id) + this.state.index;
+  console.log(num);
+  this.setState({
+    currentModalPicture: num
+  })
+}
 
 	render() {
     var shouldDefault = !this.state['0'] && !this.state['1'] && !this.state['2'] ? true : false
 		return (
-	  <div className={styles.header} onClick={() => this.props.clickHandler()}>Yelp<br></br>
-	    <div className={styles.test}>Restaurant Name</div>
-	    <br></br>
-	      <div className={styles.container}>
-		    {this.state.photos.map((ele, i) => {
-		  	  if (i <= 2) {
-		  	  	if (i === 0) {
-				      return <span><Arrow direction="left" clickHandler={this.previousPicture}/><Photo num={i} shouldDefault={shouldDefault} photo={this.state.photos[this.state.index]} users={this.state.users} defaultPicture={this.defaultPicture}/></span>
-		  		  } else if (i === 1) {
-				      return <span><Photo num={i} shouldDefault={shouldDefault} photo={this.state.photos[this.state.index + 1]} users={this.state.users} middle={true} defaultPicture={this.defaultPicture}/></span>  			
-		  		  } else if (i === 2) {
-				      return <span><Photo num={i} shouldDefault={shouldDefault} photo={this.state.photos[this.state.index + 2]} users={this.state.users} defaultPicture={this.defaultPicture}/><Arrow direction="right" clickHandler={this.nextPicture}/></span>
-		  	    }
-			    }
-		    })
-		    }
-      </div>
-	  </div>
+    <div className={styles.modalContainer}>
+  	  <div className={styles.header}>Yelp<br></br>
+  	    <div className={styles.test}>Restaurant Name</div>
+  	    <br></br>
+  	      <div className={styles.container}>
+  		    {this.state.photos.map((ele, i) => {
+  		  	  	if (i === 0) {
+  				      return <span>
+                  <Arrow direction="left" clickHandler={this.previousPicture}/>
+                  <Photo num={i} shouldDefault={shouldDefault} photo={this.state.photos[this.state.index]} 
+                    users={this.state.users} defaultPicture={this.defaultPicture} showModal={this.showModal} detectModal={this.detectModalNumber}/>
+                </span>
+  		  		  } else if (i === 1) {
+  				      return <span>
+                  <Photo num={i} shouldDefault={shouldDefault} photo={this.state.photos[this.state.index + 1]} users={this.state.users} 
+                    middle={true} defaultPicture={this.defaultPicture} showModal={this.showModal} detectModal={this.detectModalNumber}/>
+                </span>  			
+  		  		  } else if (i === 2) {
+  				      return <span>
+                  <Photo num={i} shouldDefault={shouldDefault} photo={this.state.photos[this.state.index + 2]} users={this.state.users} 
+                    defaultPicture={this.defaultPicture} showModal={this.showModal} detectModal={this.detectModalNumber}/>
+                  <Arrow direction="right" clickHandler={this.nextPicture}/>
+                </span>
+  		  	    }
+  		    })
+  		    }
+        </div>
+  	  </div>
+      <Modal closeModal={this.closeModal} isOpen={this.state.isModalOpen} photos={this.state.photos} index={this.state.currentModalPicture} zero={this.state['modal0']} one={this.state['modal1']} two={this.state['modal2']}/>
+    </div>
 		);
   } 
 }
