@@ -11,7 +11,7 @@ class PhotoWheel extends React.Component {
     this.state = {
     	photos: [],
     	users: [],
-    	restaurant: 16,
+    	restaurant: 2,
     	index: 0,
       0: false,
       1: false,
@@ -26,6 +26,8 @@ class PhotoWheel extends React.Component {
     this.detectModalNumber = this.detectModalNumber.bind(this);
     this.previousModalPicture = this.previousModalPicture.bind(this);
     this.nextModalPicture = this.nextModalPicture.bind(this);
+    this.nextModalPictureBody = this.nextModalPictureBody.bind(this);
+    this.exitModalWindow = this.exitModalWindow.bind(this);
 	}
 
 componentWillMount() {
@@ -117,6 +119,20 @@ nextModalPicture() {
   })  
 }
 
+nextModalPictureBody(e) {
+  if(e.target.id === 'modalbody' || e.target.id === 'photobody') {
+    var index = this.state.currentModalPicture;
+    var length = this.state.photos.length;
+    if (index === length-1) {
+      return;
+    }
+    index += 1;
+    this.setState({
+      currentModalPicture: index
+    });  
+  }
+}
+
 showModal(e) {
   this.setState({
     isModalOpen: !this.state.isModalOpen
@@ -128,6 +144,14 @@ detectModalNumber(e) {
   this.setState({
     currentModalPicture: num
   })
+}
+
+exitModalWindow(e) {
+  if(e.target.id === "modal") {
+    this.setState({
+      isModalOpen: !this.state.isModalOpen
+    });
+  }
 }
 
 	render() {
@@ -161,7 +185,7 @@ detectModalNumber(e) {
   		    }
         </div>
   	  </div>
-      <Modal prevPic={this.previousModalPicture} nextPic={this.nextModalPicture} closeModal={this.showModal} isOpen={this.state.isModalOpen} 
+      <Modal nextModalPic={this.nextModalPictureBody} exitModalWindow={this.exitModalWindow} prevPic={this.previousModalPicture} nextPic={this.nextModalPicture} closeModal={this.showModal} isOpen={this.state.isModalOpen} 
         photos={this.state.photos} users={this.state.users} index={this.state.currentModalPicture}/>
     </div>
 		);

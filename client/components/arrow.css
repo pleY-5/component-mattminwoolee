@@ -6,8 +6,8 @@
   height: 40px;
   cursor: pointer;
   position: absolute;
-  top: 85px;
-  left: 360px;
+  top: 90px;
+  left: 30px;
   background-image: url(./greyleftarrow.png);
 }
 
@@ -19,8 +19,8 @@
   height: 40px;
   cursor: pointer;
   position: absolute;
-  top: 85px;
-  left: 360px;
+  top: 90px;
+  left: 30px;
   background-image: url(./whiteleftarrow.png);
 }
 
@@ -30,8 +30,8 @@
 	width: 35px;
   height: 40px;
   position: absolute;
-  top: 85px;
-  right: 360px;
+  top: 90px;
+  right: 30px;
   display: inline-block;
   cursor: pointer;
   background-image: url(./greyrightarrow.png);
@@ -42,8 +42,8 @@
 	width: 35px;
   height: 40px;
   position: absolute;
-  top: 85px;
-  right: 360px;
+  top: 90px;
+  right: 30px;
   display: inline-block;
   cursor: pointer;
   background-image: url(./whiterightarrow.png);
