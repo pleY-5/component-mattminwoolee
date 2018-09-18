@@ -31,9 +31,17 @@ for(var i = 0; i < 100; i++) {
   users.push([newName, isElite(), randomizeInt(1300), randomizeInt(300), faker.image.avatar()]);
 }
 
+const months = {'01': 'January', '02': 'February', '03': 'March', '04': 'April', '05': 'May', '06': 'June', '07': 'July', '08': 'August', '09': 'September', '10': 'October', '11': 'November', '12': 'December'};
+
+
 for(var i = 0; i < businessNames.length; i++) {
 	for(var j = 0; j < 6; j++) {
-	  photoData.push([photos[randomizeInt(photos.length-1)], JSON.stringify(faker.date.between('2010-02-26', '2018-01-04')).substr(1,10), faker.random.words(), randomizeInt(users.length), i+1]);		
+		var date = JSON.stringify(faker.date.between('2010-02-26', '2018-01-04')).substr(1,10);
+		var month = months[date.substring(5,7)];
+		var year = date.substring(0,4);
+		var day = date.substring(8,10);
+		var newDate = month + " " + day + ", " + year; 
+	  photoData.push([photos[randomizeInt(photos.length-1)], newDate, faker.random.words(), randomizeInt(users.length), i+1]);		
 	}
 }
 
