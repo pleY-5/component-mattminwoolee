@@ -193,12 +193,12 @@
 
 .greyShareIcon {
 	padding-top: 4px;
-  content: url(./greyshare.png);
+  content: url('https://s3-us-west-1.amazonaws.com/yelpreactor/greyshare.png');
 }
 
 .whiteShareIcon {
 	padding-top: 4px;
-  content: url(./whiteshare.png);
+  content: url('https://s3-us-west-1.amazonaws.com/yelpreactor/whiteshare.png');
 }
 
 .whiteShare {
@@ -222,12 +222,12 @@
 
 .greyBrowseIcon {
 	padding-top: 4px;
-  content: url(./greybrowse.png);
+  content: url('https://s3-us-west-1.amazonaws.com/yelpreactor/greybrowse.png');
 }
 
 .whiteBrowseIcon {
 	padding-top: 4px;
-  content: url(./whitebrowse.png);
+  content: url('https://s3-us-west-1.amazonaws.com/yelpreactor/whitebrowse.png');
 }
 
 .whiteBrowse {
@@ -253,12 +253,12 @@
 
 .greyComplimentIcon {
 	padding-top: 4px;
-  content: url(./greycompliment.png);
+  content: url('https://s3-us-west-1.amazonaws.com/yelpreactor/greycompliment.png');
 }
 
 .whiteComplimentIcon {
 	padding-top: 4px;
-  content: url(./whitecompliment.png);
+  content: url('https://s3-us-west-1.amazonaws.com/yelpreactor/whitecompliment.png');
 }
 
 .whiteCompliment {
@@ -282,7 +282,7 @@
 
 .whiteReportIcon {
 	padding-top: 4px;
-  content: url(./whitereport.png);
+  content: url('https://s3-us-west-1.amazonaws.com/yelpreactor/whitereport.png');
 }
 
 .report {

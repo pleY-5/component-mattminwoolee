@@ -8,7 +8,7 @@
   position: absolute;
   top: 90px;
   left: 30px;
-  background-image: url(./greyleftarrow.png);
+  background-image: url('https://s3-us-west-1.amazonaws.com/yelpreactor/greyleftarrow.png');
 }
 
 .arrowleft:hover {
@@ -21,7 +21,7 @@
   position: absolute;
   top: 90px;
   left: 30px;
-  background-image: url(./whiteleftarrow.png);
+  background-image: url('https://s3-us-west-1.amazonaws.com/yelpreactor/whiteleftarrow.png');
 }
 
 
@@ -34,7 +34,7 @@
   right: 30px;
   display: inline-block;
   cursor: pointer;
-  background-image: url(./greyrightarrow.png);
+  background-image: url('https://s3-us-west-1.amazonaws.com/yelpreactor/greyrightarrow.png');
 }
 
 .arrowright:hover {
@@ -46,7 +46,7 @@
   right: 30px;
   display: inline-block;
   cursor: pointer;
-  background-image: url(./whiterightarrow.png);
+  background-image: url('https://s3-us-west-1.amazonaws.com/yelpreactor/whiterightarrow.png');
 }
 
 .arrowrightmodal {
@@ -58,7 +58,7 @@
   right: .7%;
   display: inline-block;
   cursor: pointer;
-  background-image: url(./greyrightarrow.png);
+  background-image: url('https://s3-us-west-1.amazonaws.com/yelpreactor/greyrightarrow.png');
 }
 
 .arrowrightmodal:hover {
@@ -70,7 +70,7 @@
   right: .7%;
   display: inline-block;
   cursor: pointer;
-  background-image: url(./whiterightarrow.png);
+  background-image: url('https://s3-us-west-1.amazonaws.com/yelpreactor/whiterightarrow.png');
 }
 
 .arrowleftmodal {
@@ -83,7 +83,7 @@
   position: absolute;
   top: 47%;
   left: .7%;
-  background-image: url(./greyleftarrow.png);
+  background-image: url('https://s3-us-west-1.amazonaws.com/yelpreactor/greyleftarrow.png');
 }
 
 .arrowleftmodal:hover {
@@ -96,5 +96,5 @@
   position: absolute;
   top: 47%;
   left: .7%;
-  background-image: url(./whiteleftarrow.png);
+  background-image: url('https://s3-us-west-1.amazonaws.com/yelpreactor/whiteleftarrow.png');
 }
