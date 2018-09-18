@@ -2,19 +2,22 @@
 
 exports[`Photowheel component setup renders correctly 1`] = `
 <div
-  className="header"
-  onClick={[Function]}
+  className="modalContainer"
 >
-  Yelp
-  <br />
   <div
-    className="test"
+    className="header"
   >
-    Restaurant Name
+    Yelp
+    <br />
+    <div
+      className="test"
+    >
+      Restaurant Name
+    </div>
+    <br />
+    <div
+      className="container"
+    />
   </div>
-  <br />
-  <div
-    className="container"
-  />
 </div>
 `;

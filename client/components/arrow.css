@@ -6,9 +6,9 @@
   height: 40px;
   cursor: pointer;
   position: absolute;
-  top: 85px;
-  left: 360px;
-  background-image: url(./greyleftarrow.png);
+  top: 90px;
+  left: 30px;
+  background-image: url('https://s3-us-west-1.amazonaws.com/yelpreactor/greyleftarrow.png');
 }
 
 .arrowleft:hover {
@@ -19,9 +19,9 @@
   height: 40px;
   cursor: pointer;
   position: absolute;
-  top: 85px;
-  left: 360px;
-  background-image: url(./whiteleftarrow.png);
+  top: 90px;
+  left: 30px;
+  background-image: url('https://s3-us-west-1.amazonaws.com/yelpreactor/whiteleftarrow.png');
 }
 
 
@@ -30,11 +30,11 @@
 	width: 35px;
   height: 40px;
   position: absolute;
-  top: 85px;
-  right: 360px;
+  top: 90px;
+  right: 30px;
   display: inline-block;
   cursor: pointer;
-  background-image: url(./greyrightarrow.png);
+  background-image: url('https://s3-us-west-1.amazonaws.com/yelpreactor/greyrightarrow.png');
 }
 
 .arrowright:hover {
@@ -42,11 +42,59 @@
 	width: 35px;
   height: 40px;
   position: absolute;
-  top: 85px;
-  right: 360px;
+  top: 90px;
+  right: 30px;
   display: inline-block;
   cursor: pointer;
-  background-image: url(./whiterightarrow.png);
+  background-image: url('https://s3-us-west-1.amazonaws.com/yelpreactor/whiterightarrow.png');
 }
 
+.arrowrightmodal {
+  z-index: 6;
+  width: 35px;
+  height: 40px;
+  position: absolute;
+  top: 47%;
+  right: .7%;
+  display: inline-block;
+  cursor: pointer;
+  background-image: url('https://s3-us-west-1.amazonaws.com/yelpreactor/greyrightarrow.png');
+}
 
+.arrowrightmodal:hover {
+  z-index: 6;
+  width: 35px;
+  height: 40px;
+  position: absolute;
+  top: 47%;
+  right: .7%;
+  display: inline-block;
+  cursor: pointer;
+  background-image: url('https://s3-us-west-1.amazonaws.com/yelpreactor/whiterightarrow.png');
+}
+
+.arrowleftmodal {
+  display: inline-block;
+  position: fixed;
+  z-index: 6;
+  width: 35px;
+  height: 40px;
+  cursor: pointer;
+  position: absolute;
+  top: 47%;
+  left: .7%;
+  background-image: url('https://s3-us-west-1.amazonaws.com/yelpreactor/greyleftarrow.png');
+}
+
+.arrowleftmodal:hover {
+  display: inline-block;
+  position: fixed;
+  z-index: 6;
+  width: 35px;
+  height: 40px;
+  cursor: pointer;
+  position: absolute;
+  top: 47%;
+  left: .7%;
+  background-image: url('https://s3-us-west-1.amazonaws.com/yelpreactor/whiteleftarrow.png');
+}

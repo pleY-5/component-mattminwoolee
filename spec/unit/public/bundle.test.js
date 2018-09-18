@@ -4,6 +4,7 @@ import { shallow, mount } from 'enzyme';
 import renderer from 'react-test-renderer';
 import { render } from 'react-dom';
 import sinon from 'sinon';
+import Arrow from '../../../client/components/arrow.jsx';
 
 jest.mock('react-dom');
 
@@ -14,10 +15,10 @@ describe('Photowheel component setup', () => {
   });
  
 
-  it('default restaurant should start at 4', () => {
+  it('should have a default modal state of false', () => {
     const wrapper = shallow(<PhotoWheel />);
-    const restaurant = wrapper.state().restaurant;
-    expect(restaurant).toEqual(4);
+    const isModalOpen = wrapper.state().isModalOpen;
+    expect(isModalOpen).toEqual(false);
   });
 
   it('default photos should start at 6', () => {
@@ -27,10 +28,12 @@ describe('Photowheel component setup', () => {
   });
 
   
-  // it('renders children when passed in', () => {
-  //   const wrapper = shallow(<PhotoWheel>);
-  //   expect(wrapper.contains(<div className="hi" />).to.equal(true);
-  // });
+  it('PhotoWheel renders a modal component', () => {
+    const wrapper = shallow(<PhotoWheel>);
+    expect(wrapper.contains(<Modal nextModalPic={this.nextModalPictureBody} exitModalWindow={this.exitModalWindow} prevPic={this.previousModalPicture} nextPic={this.nextModalPicture} closeModal={this.showModal} isOpen={this.state.isModalOpen} 
+        photos={this.state.photos} users={this.state.users} index={this.state.currentModalPicture}/>
+    ).to.equal(true);
+  });
 
   it('renders correctly', () => {
     const tree = renderer
@@ -47,13 +50,12 @@ describe('Photowheel component setup', () => {
     wrapper.unmount()
   });
   
-  // xit('simulates click events', () => {
-  //   const onClick = sinon.spy();
-  //   const wrapper = mount(<PhotoWheel clickHandler={onClick} />);
-  //   wrapper.find('.photowheel__container___3_Zuq').simulate('click');
-  //   expect(onClick.callCount).toEqual(1);
-  //   wrapper.unmount()
-  // });
+  xit('simulates click events', () => {
+    const onClick = sinon.spy();
+    const wrapper = shallow(<Arrow direction="left" clickHandler={onClick} />);
+    wrapper.find('.arrow__arrowrightmodal___1Ici_').simulate('click');
+    expect(onClick.callCount).toEqual(1);
+  });
 
   // it('should have called react-dom render', () => {
   // 	expect(render).toHaveBeenCalledWith(

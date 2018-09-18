@@ -1,7 +1,10 @@
 .description {
   color: rgba(225,225,225,0.9);
   font-weight: normal;
-  white-space: nowrap;
+  display:block;
+	flex-wrap: wrap;
+	align-content: center;
+	white-space: nowrap;
   font-size: 85%;
   padding-left: 2px;
 }
@@ -14,11 +17,31 @@
 }
 
 .spanHide {
+	-webkit-user-select: none; /* Chrome/Safari */        
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none;  /* IE */
+	z-index: 2;
+	font-size:90%;
+	width:243px;
+	bottom: -11px;
+	right: 0;
+	left: -11px;
+	height:50px;
+	overflow: hidden;
+  position: absolute;
   visibility: hidden;
   opacity: 0;
+  color: #fff;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  flex-wrap: wrap;
+  text-shadow: 1px 1px 1px rgba(0,0,0,0.5);
 }
 
 .spanShow {
+	-webkit-user-select: none; /* Chrome/Safari */        
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none;  /* IE */
 	z-index: 2;
 	font-size:90%;
 	width:243px;
@@ -31,13 +54,10 @@
   visibility: visible;
   opacity: 1;
   color: #fff;
-  transition: opacity .2s, visibility .2s;
   background: rgba(0,0,0,0.5);
   display: flex;
-  flex-wrap: wrap;
-  align-items: center;
   text-shadow: 1px 1px 1px rgba(0,0,0,0.5);
-
+  pointer-events: none;
 }
 
 .photoContainer {
@@ -51,10 +71,35 @@
 	height:220px;
 	transition: all .15s ease-in-out;
 	cursor: pointer;
+	z-index: 1;
+	-webkit-user-select: none; /* Chrome/Safari */        
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none;  /* IE */
 }
 
-.image:hover {
+.imageAfter {
+	width:220px;
+	height:220px;
+	transition: all .15s ease-in-out;
+	cursor: pointer;
 	position: relative;
 	transform: scale(1.1);
 	z-index: 1;
+	-webkit-user-select: none; /* Chrome/Safari */        
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE */
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.avatarContainer {
+	display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.captionContainer {
+	display: flex;
+  align-items:flex-start;
+  flex-direction: column;
+  flex-wrap: wrap;
 }

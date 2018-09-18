@@ -1,0 +1,335 @@
+.modal {
+  background: rgba(0,0,0,0.65);
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index:5;
+  padding:20px;
+}
+
+.modalBox {
+  color: red;
+  background-color: #fff;
+  border-radius: 5px;
+  min-width: 98%;
+  min-height: 602px;
+  position: relative;
+}
+
+.closeModal {
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  color: rgba(192,192,192,0.8);
+  font-weight: bold;
+  position: absolute;
+  top: 1.5%;
+  right: 5%;
+  cursor: pointer;
+}
+
+.closeModal:hover {
+  font-weight: bold;
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  color: rgba(255,255,255,0.8);
+  position: absolute;
+  top: 1.5%;
+  right: 5%;
+  cursor: pointer;
+}
+
+
+.userBox {
+	font-size: 14px;
+  line-height: 1.28571em;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  color: #333;
+  position: absolute;
+  right: 0;
+  width: 21%;
+  height: 100%;
+  border-radius: 5px;
+  padding:12px;
+}
+
+.photoBox {
+  background-color: black;
+  position: absolute;
+  width: 77%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  border-radius: 5px 0px 0px 5px;
+  cursor: pointer;
+}
+
+.image {
+  max-width: 90.5%;
+  height: 602px;
+}
+
+.avatar {
+	width:30px;
+	height:30px;
+	float: left;
+}
+
+.userProfile {
+	padding: 5px;
+  display:block;
+	flex-wrap: wrap;
+	align-content: center;
+	white-space: nowrap;
+}
+
+.userCaption {
+	padding: 5px;
+
+}
+
+.userName {
+	padding-left: 8px;
+	color: #0073bb;
+	font-weight: bold;
+	break-after: always;
+}
+
+.userName:hover {
+	text-decoration: underline;
+	padding-left: 8px;
+	color: #0073bb;
+	font-weight: bold;
+	break-after: always;
+	cursor: pointer;
+}
+
+.userFriends {
+  padding-left: 3px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.userReviews {
+  font-size: 12px;
+  padding-left: 3px;
+  font-weight: bold;
+}
+
+.friendsIcon {
+	padding-top: 1px;
+	padding-left: 5px;
+	width: 18px;
+	height: 18px;
+}
+
+.reviewsIcon {
+	padding-top: 1px;
+	padding-left: 5px;
+	width: 18px;
+	height: 18px;
+}
+
+.friendRev {
+	display: flex;
+	align-items: center;
+}
+
+.timeStamp {
+	font-size: 12px;
+  line-height: 1.5em;
+  color: #999;
+  padding-left: 5px;
+  margin-bottom: 10px;
+}
+
+.helpful {
+	color: rgb(125,125,125);
+	font-size: 13px;
+	padding-left: 5px;
+	font-weight: bold;
+	white-space: nowrap;
+	margin-bottom: 6px;
+}
+
+.footer {
+	-webkit-user-select: none; /* Chrome/Safari */        
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none;  /* IE */
+	display: flex;
+	align-items: center;
+	z-index: 7;
+	position: absolute;
+	width: 100%;
+	height: 5%;
+	background-color: rgba(0,0,0,0.7);
+	bottom: 0;
+	border-radius: 0 0 5px 5px;
+	color: #999;
+	white-space: nowrap;
+	overflow:visible;
+	cursor: default;
+}
+
+.pageCount {
+	font-size: 14px;
+	font-weight: normal;
+	left: 48%;
+	position: absolute;
+}
+
+.elite {
+	padding-left: 6px;
+  font-size: 12px;
+  color: #f15c00;
+  font-weight: bold;
+}
+
+.notElite {
+	display:none;
+}
+
+.greyShareIcon {
+	padding-top: 4px;
+  content: url('https://s3-us-west-1.amazonaws.com/yelpreactor/greyshare.png');
+}
+
+.whiteShareIcon {
+	padding-top: 4px;
+  content: url('https://s3-us-west-1.amazonaws.com/yelpreactor/whiteshare.png');
+}
+
+.whiteShare {
+	color: rgba(255,255,255,0.9);
+	padding-left: 2px;
+  padding-top: 3px; 
+}
+
+.greyShare {
+  padding-left: 2px;
+  padding-top: 3px; 
+}
+
+.share {
+	display: flex;
+	position: absolute;
+	right: 16%;
+  cursor: pointer;
+  align-items: center;
+}
+
+.greyBrowseIcon {
+	padding-top: 4px;
+  content: url('https://s3-us-west-1.amazonaws.com/yelpreactor/greybrowse.png');
+}
+
+.whiteBrowseIcon {
+	padding-top: 4px;
+  content: url('https://s3-us-west-1.amazonaws.com/yelpreactor/whitebrowse.png');
+}
+
+.whiteBrowse {
+
+	padding-left: 2px;
+  padding-top: 3px; 
+	color: rgba(255,255,255,0.9);
+}
+
+.greyBrowse {
+	font-family: 'Helvetica Rounded Bold';
+  padding-top: 3px; 
+	padding-left: 2px;
+}
+
+.browse {
+	display: flex;
+	position: absolute;
+	left: .5%;
+  cursor: pointer;
+  align-items: center;
+}
+
+.greyComplimentIcon {
+	padding-top: 4px;
+  content: url('https://s3-us-west-1.amazonaws.com/yelpreactor/greycompliment.png');
+}
+
+.whiteComplimentIcon {
+	padding-top: 4px;
+  content: url('https://s3-us-west-1.amazonaws.com/yelpreactor/whitecompliment.png');
+}
+
+.whiteCompliment {
+	padding-left: 2px;
+  padding-top: 3px; 
+	color: rgba(255,255,255,0.9);
+}
+
+.greyCompliment {
+  padding-top: 3px; 
+	padding-left: 2px;
+}
+
+.compliment {
+	display: flex;
+	position: absolute;
+	right: 5%;
+  cursor: pointer;
+  align-items: center;
+}
+
+.whiteReportIcon {
+	padding-top: 4px;
+  content: url('https://s3-us-west-1.amazonaws.com/yelpreactor/whitereport.png');
+}
+
+.report {
+	display: flex;
+	position: absolute;
+	right: 2%;
+  cursor: pointer;
+  align-items: center;
+}
+
+.helper {
+	color: #666;
+	font-size: 12px;
+	margin: 0 5px 0 0;
+	padding: 5px;
+	cursor: pointer;
+	display: inline-block;
+	vertical-align: middle;
+	border: 1px solid;
+	font-weight: bold;
+	text-align: center;
+	border-color: #ccc;
+	user-select: none;
+	background-color: #f7f7f7;
+	background: linear-gradient(#fff, #f7f7f7);
+	box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+	border-radius: 3px;
+}
+
+.helper:hover {
+	cursor: pointer;
+	display: inline-block;
+	vertical-align: middle;
+	border: 1px solid;
+	font-weight: bold;
+	text-align: center;
+	border-color: #ccc;
+	user-select: none;
+	background-color: #f7f7f7;
+	background: linear-gradient(#fff, #f7f7f7);
+	box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+	border-radius: 3px;
+}
+
+.helperHolder {
+	position: relative;
+	display: flex;
+	width: 100%;
+	padding: 0 5px;
+}
