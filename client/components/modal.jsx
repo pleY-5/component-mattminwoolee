@@ -53,7 +53,7 @@ class Modal extends React.Component {
               <Arrow direction="right" modal="true" clickHandler={this.props.nextPic}/>
 
               <div className={styles.footer}>
-                <div className={styles.browse} onMouseEnter={() => this.changeState('browse')} onMouseLeave={() => this.changeState('browse')}><span className={browseIcon}></span><span className={browse}>Browse All</span></div>
+                <div className={styles.browse} onMouseEnter={() => this.changeState('browse')} onMouseLeave={() => this.changeState('browse')}><span className={browseIcon}></span><span className={browse}>Browse all</span></div>
                 <span className={styles.pageCount}>{this.props.index + 1} of {this.props.photos.length}</span>
                 <div className={styles.share} onMouseEnter={() => this.changeState('share')} onMouseLeave={() => this.changeState('share')}><span className={shareIcon}></span><span className={share}>Share</span></div>
                 <div className={styles.compliment} onMouseEnter={() => this.changeState('compliment')} onMouseLeave={() => this.changeState('compliment')}><span className={complimentIcon}></span><span className={compliment}>Compliment</span></div>
@@ -81,8 +81,9 @@ class Modal extends React.Component {
               <div className={styles.helpful}>
                 Was this photo ...?
               </div>
-              <div>
-                <a href='#' />
+              <div className={styles.helperHolder}>
+                <div><span className={styles.helper}>Helpful</span></div>
+                <div><span className={styles.helper}>Not Helpful</span></div>
               </div>
 
             </div>  
