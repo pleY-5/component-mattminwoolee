@@ -11,7 +11,6 @@ class PhotoWheel extends React.Component {
     this.state = {
     	photos: [],
     	users: [],
-    	restaurant: 2,
     	index: 0,
       0: false,
       1: false,
@@ -35,10 +34,11 @@ componentWillMount() {
 }
 
 getData() {
+  var url = window.location.pathname.substring(1, window.location.pathname.length - 1).toLowerCase();
   $.ajax({
     method: 'GET',
-    url: '/photos',
-    data: {id: this.state.restaurant},
+    url: `/${url}/restaurants`,
+    data: {id: url},
     success: (data) => {
       this.setState({
         photos: data
@@ -46,7 +46,7 @@ getData() {
       data = data.map(ele => {return ele.user});
       $.ajax({
 		    method: 'GET',
-		    url: '/users',
+		    url: `/${url}/users`,
 		    data: {users: data},
 		    success: (result) => {
 		      this.setState({

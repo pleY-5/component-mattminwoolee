@@ -17,8 +17,18 @@ db.connect((err) => {
 	console.log('connected to db');
 });
 
-var getAllPictures = function(restaurant, cb) {
-	db.query(`SELECT url, postdate, caption, user FROM pictures where restaurant = ${restaurant}`, (err, result) => {
+var getAllPicturesById = function(restaurant, cb) {
+	db.query(`SELECT url, postdate, caption, user FROM pictures WHERE restaurant = ${restaurant}`, (err, result) => {
+	  if(err) {
+	  	cb(err);
+	  }	else {
+	  	cb(null, result);
+	  }
+	});
+}
+
+var getAllPicturesByName = function(restaurant, cb) {
+	db.query(`SELECT url, postdate, caption, user FROM pictures WHERE restaurant IN ( SELECT id FROM restaurants WHERE name = '${restaurant}')`, (err, result) => {
 	  if(err) {
 	  	cb(err);
 	  }	else {
@@ -38,5 +48,6 @@ var getAllUsers = function(users, cb) {
 }
 
 module.exports.getAllUsers = getAllUsers;
-module.exports.getAllPictures = getAllPictures;
+module.exports.getAllPicturesByName = getAllPicturesByName;
+module.exports.getAllPicturesById = getAllPicturesById;
 module.exports.db = db;
