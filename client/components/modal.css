@@ -97,6 +97,15 @@
 	break-after: always;
 }
 
+.userName:hover {
+	text-decoration: underline;
+	padding-left: 8px;
+	color: #0073bb;
+	font-weight: bold;
+	break-after: always;
+	cursor: pointer;
+}
+
 .userFriends {
   padding-left: 3px;
   font-size: 12px;
@@ -222,12 +231,14 @@
 }
 
 .whiteBrowse {
+
 	padding-left: 2px;
   padding-top: 3px; 
 	color: rgba(255,255,255,0.9);
 }
 
 .greyBrowse {
+	font-family: 'Helvetica Rounded Bold';
   padding-top: 3px; 
 	padding-left: 2px;
 }
@@ -280,4 +291,45 @@
 	right: 2%;
   cursor: pointer;
   align-items: center;
+}
+
+.helper {
+	color: #666;
+	font-size: 12px;
+	margin: 0 5px 0 0;
+	padding: 5px;
+	cursor: pointer;
+	display: inline-block;
+	vertical-align: middle;
+	border: 1px solid;
+	font-weight: bold;
+	text-align: center;
+	border-color: #ccc;
+	user-select: none;
+	background-color: #f7f7f7;
+	background: linear-gradient(#fff, #f7f7f7);
+	box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+	border-radius: 3px;
+}
+
+.helper:hover {
+	cursor: pointer;
+	display: inline-block;
+	vertical-align: middle;
+	border: 1px solid;
+	font-weight: bold;
+	text-align: center;
+	border-color: #ccc;
+	user-select: none;
+	background-color: #f7f7f7;
+	background: linear-gradient(#fff, #f7f7f7);
+	box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+	border-radius: 3px;
+}
+
+.helperHolder {
+	position: relative;
+	display: flex;
+	width: 100%;
+	padding: 0 5px;
 }
