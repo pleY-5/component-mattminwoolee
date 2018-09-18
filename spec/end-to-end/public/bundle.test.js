@@ -26,7 +26,7 @@ describe('my first test', () => {
     await page.goto(pageUrl, {waitUntil: 'networkidle2'});
   });
 
-	test('test to see if div with hi was found', async () => {
+	test('test to see if div with Restaurant Name was found', async () => {
     var div = '.photowheel__test___2-916';
     var html = await page.$eval(div, e => e.textContent);
     expect(html).toEqual('Restaurant Name');

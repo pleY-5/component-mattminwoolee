@@ -21,8 +21,8 @@ CREATE TABLE users (
 CREATE TABLE pictures (
   id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
   url varchar(80) NOT NULL,
-  postdate date,
-  caption VARCHAR(100),
+  postdate varchar(30),
+  caption varchar(100),
   user int NOT NULL,
   restaurant int NOT NULL,
   FOREIGN KEY (user) REFERENCES users(user_id),
