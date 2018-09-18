@@ -5,21 +5,30 @@ var db = require('../database/index.js');
 
 app.use(parser.json());
 app.use(parser.urlencoded({ extended: true }));
-app.use(express.static('./public'));
+app.use('/:idOrName', express.static('./public'));
 
-
-
-app.get('/photos', (req, res) => {
-  db.getAllPictures(req.query.id, (err, data) => {
-  	if(err) {
-  		res.send(err);
-  	} else {
-		  res.send(data); 		
-  	}
-  });
+app.get('/:idOrName/restaurants', (req, res) => {
+  if(isNaN(parseInt(req.params.idOrName))) {
+    console.log(req.params.idOrName)
+    db.getAllPicturesByName(req.params.idOrName, (err,data) => {
+      if(err) {
+        res.send(err);
+      } else {
+        res.send(data);
+      }
+    });
+  } else {
+    db.getAllPicturesById(req.params.idOrName, (err, data) => {
+    	if(err) {
+    		res.send(err);
+    	} else {
+  		  res.send(data); 		
+    	}
+    });   
+  }
 });
 
-app.get('/users', (req, res) => {
+app.get('/:idOrName/users', (req, res) => {
   db.getAllUsers(req.query.users, (err, data) => {
   	if(err) {
   		res.send(err);
