@@ -2,14 +2,19 @@ var express = require('express');
 var app = express();
 var parser = require('body-parser');
 var db = require('../database/index.js');
+var cors = require('cors');
+
+var corsOptions = {
+  origin: 'http://localhost:3005',
+  optionsSuccessStatus: 200
+}
 
 app.use(parser.json());
 app.use(parser.urlencoded({ extended: true }));
 app.use('/:idOrName', express.static('./public'));
 
-app.get('/:idOrName/restaurants', (req, res) => {
+app.get('/:idOrName/restaurants', cors(corsOptions), (req, res) => {
   if(isNaN(parseInt(req.params.idOrName))) {
-    console.log(req.params.idOrName)
     db.getAllPicturesByName(req.params.idOrName, (err,data) => {
       if(err) {
         res.send(err);
@@ -28,7 +33,7 @@ app.get('/:idOrName/restaurants', (req, res) => {
   }
 });
 
-app.get('/:idOrName/users', (req, res) => {
+app.get('/:idOrName/users', cors(corsOptions), (req, res) => {
   db.getAllUsers(req.query.users, (err, data) => {
   	if(err) {
   		res.send(err);
