@@ -154,37 +154,33 @@ exitModalWindow(e) {
   }
 }
 
-	render() {
-    var shouldDefault = !this.state['0'] && !this.state['1'] && !this.state['2'] ? true : false
-		return (
+render() {
+  var shouldDefault = !this.state['0'] && !this.state['1'] && !this.state['2'] ? true : false
+	return (
     <div className={styles.modalContainer}>
-  	  <div className={styles.header}>Yelp<br></br>
-  	    <div className={styles.test}>Restaurant Name</div>
-  	    <br></br>
-  	      <div className={styles.container}>
-  		    {this.state.photos.map((ele, i) => {
-  		  	  	if (i === 0) {
-  				      return <span>
-                  <Arrow direction="left" clickHandler={this.previousPicture}/>
-                  <Photo num={i} shouldDefault={shouldDefault} photo={this.state.photos[this.state.index]} 
-                    users={this.state.users} defaultPicture={this.defaultPicture} showModal={this.showModal} detectModal={this.detectModalNumber}/>
-                </span>
-  		  		  } else if (i === 1) {
-  				      return <span>
-                  <Photo num={i} shouldDefault={shouldDefault} photo={this.state.photos[this.state.index + 1]} users={this.state.users} 
-                    middle={true} defaultPicture={this.defaultPicture} showModal={this.showModal} detectModal={this.detectModalNumber}/>
-                </span>  			
-  		  		  } else if (i === 2) {
-  				      return <span>
-                  <Photo num={i} shouldDefault={shouldDefault} photo={this.state.photos[this.state.index + 2]} users={this.state.users} 
-                    defaultPicture={this.defaultPicture} showModal={this.showModal} detectModal={this.detectModalNumber}/>
-                  <Arrow direction="right" clickHandler={this.nextPicture}/>
-                </span>
-  		  	    }
-  		    })
-  		    }
-        </div>
-  	  </div>
+      <div className={styles.container}>
+  	    {this.state.photos.map((ele, i) => {
+  	  	  	if (i === 0) {
+  			      return <span>
+                <Arrow direction="left" clickHandler={this.previousPicture}/>
+                <Photo num={i} shouldDefault={shouldDefault} photo={this.state.photos[this.state.index]} 
+                  users={this.state.users} defaultPicture={this.defaultPicture} showModal={this.showModal} detectModal={this.detectModalNumber}/>
+              </span>
+  	  		  } else if (i === 1) {
+  			      return <span>
+                <Photo num={i} shouldDefault={shouldDefault} photo={this.state.photos[this.state.index + 1]} users={this.state.users} 
+                  middle={true} defaultPicture={this.defaultPicture} showModal={this.showModal} detectModal={this.detectModalNumber}/>
+              </span>  			
+  	  		  } else if (i === 2) {
+  			      return <span>
+                <Photo num={i} shouldDefault={shouldDefault} photo={this.state.photos[this.state.index + 2]} users={this.state.users} 
+                  defaultPicture={this.defaultPicture} showModal={this.showModal} detectModal={this.detectModalNumber}/>
+                <Arrow direction="right" clickHandler={this.nextPicture}/>
+              </span>
+  	  	    }
+  	    })
+  	    }
+      </div>
       <Modal nextModalPic={this.nextModalPictureBody} exitModalWindow={this.exitModalWindow} prevPic={this.previousModalPicture} nextPic={this.nextModalPicture} closeModal={this.showModal} isOpen={this.state.isModalOpen} 
         photos={this.state.photos} users={this.state.users} index={this.state.currentModalPicture}/>
     </div>
