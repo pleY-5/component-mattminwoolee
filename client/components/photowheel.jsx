@@ -37,7 +37,7 @@ getData() {
   var url = window.location.pathname.substring(1, window.location.pathname.length - 1).toLowerCase();
   $.ajax({
     method: 'GET',
-    url: `http://localhost:3001/${url}/restaurants`,
+    url: `api/photos/${url}/restaurants`,
     data: {id: url},
     success: (data) => {
       this.setState({
@@ -46,7 +46,7 @@ getData() {
       data = data.map(ele => {return ele.user});
       $.ajax({
 		    method: 'GET',
-		    url: `http://localhost:3001/${url}/users`,
+		    url: `api/photos/${url}/users`,
 		    data: {users: data},
 		    success: (result) => {
 		      this.setState({
