@@ -24,3 +24,6 @@ coverage
 build/
 dist/
 
+# generated Data
+/database/data
+/data
