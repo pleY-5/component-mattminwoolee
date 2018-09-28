@@ -37,3 +37,6 @@ npm install -g webpack
 npm install
 ```
 
+## API CRUD 
+
+API CRUD data flow is displayed in routers, controllers, models
