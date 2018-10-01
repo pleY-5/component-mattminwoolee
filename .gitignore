@@ -25,5 +25,6 @@ build/
 dist/
 
 # generated Data
-/database/data
+/database/cassandra/data
+/database/postgresql/data
 /data
