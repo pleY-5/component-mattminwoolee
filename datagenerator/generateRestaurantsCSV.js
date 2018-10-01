@@ -4,7 +4,7 @@ const fs = require('fs');
 
 const generateMillionNames = (letter) => {
   var allPossibilities = [];
-  for (let i = 0; i < 1000000; i++) {
+  for (let i = 0; i < 10; i++) {
     allPossibilities.push([(faker.company.companyName().replace(',', '') + i + letter).split(' ').join('')]);
   }
   return allPossibilities;
@@ -17,7 +17,7 @@ const genTenMillionEntries = (num = 0) => {
       if (err) {
         console.log(err);
       } else {
-        fs.writeFile('companyNames.csv', data, (err) => {
+        fs.writeFile('companyNamesTest.csv', data, (err) => {
           if (err) {
             console.log(err);
           }
@@ -33,7 +33,7 @@ const genTenMillionEntries = (num = 0) => {
       if (err) {
         console.log(err);
       } else {
-        fs.appendFile('companyNames.csv', data, (err) => {
+        fs.appendFile('companyNamesTest.csv', data, (err) => {
           if (err) {
             console.log(err);
           }
