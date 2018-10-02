@@ -19,7 +19,6 @@ const randomWords = [ 'Strategist Libyan Dinar', 'Fresh connect', 'content-based
   'strategy', 'Bike', 'Human', 'Indian Rupee', 'Ergonomic back up', 'Sharable next-generation', 'Toys', 'Grass-roots HDD',
   'withdrawal Checking Account', 'parsing Vermont Legacy', 'Sports lime Manager', 'application', 'cross-platform turn-key Streamlined', 'Bedfordshire', 'COM frame Central', 'Illinois Kids', 'strategize web-enabled', 'yellow', 'Salad', 'Auto Loan Account Indiana', 'Cambridgeshire', 'quantifying', 'Pants', 'visionary Automotive Robust', 'transmitter Home', 'Computer New Zealand Dollar', 'Legacy connect Refined', 'COM', 'experiences Planner', 'Home Loan Account', 'Leone Internal Rustic Steel Mouse', 'Sports orchestrate', 'backing up', 'Andorra Hungary', 'Universal Forge Centers', 'COM', 'Station Mouse' ];
 
-const letters = 'abcdefghij'.split('');
 // const generateMillionNames = (letter) => {
 //   var allPossibilities = [];
 //   for (let i = 0; i < 1000000; i++) {
@@ -27,19 +26,20 @@ const letters = 'abcdefghij'.split('');
 //   }
 //   return allPossibilities;
 // };  
-
+      
 const createNTimesSixPhotoSets = (n, round = 0) => {
-  var letter = letters[round];
   var photoEntryRow = '';
   var initial = n * round;
+  var index = initial * 6;
   var end = n * (round + 1);
   for (var i = initial; i < end; i++ ) {
     for (var j = 0; j < 6; j++ ) {
+      index++;
       var month = months[Math.floor(Math.random() * 12) + 1];
       var day = Math.floor(Math.random() * 30) + 1;
       var year = '201' + (Math.floor(Math.random() * 8) + 1); 
       var newDate = month + ' ' + day + ' ' + year; 
-      photoEntryRow = photoEntryRow + photos[randomizeInt(photos.length - 1)] + ',' + newDate + ',' + randomWords[randomizeInt(randomWords.length - 1)] + ',' + getRandomInt(initial, end) + ',' + `${i + 1}` + ',' + `TuLan${i + 1}${letter}` + '\n';
+      photoEntryRow = photoEntryRow + index + ',' + photos[randomizeInt(photos.length - 1)] + ',' + newDate + ',' + randomWords[randomizeInt(randomWords.length - 1)] + ',' + getRandomInt(initial, end) + '\n';
     }
   }
   return photoEntryRow;
@@ -51,17 +51,17 @@ const generateSixtyMillionPhotoSets = (n = 0) => {
   console.log(n);
   if ( n === 0) {
     t0 = Date.now();
-    fs.writeFile(`photos${n}.csv`, createNTimesSixPhotoSets(10, 0), (err) => {
+    fs.writeFile(`photos${n}.csv`, createNTimesSixPhotoSets(500000, 0), (err) => {
       if (err) throw err;
       console.log('The file has been saved!');
       generateSixtyMillionPhotoSets(n + 1);
     });
-  } else if ( n === 10 ) {
+  } else if ( n === 20 ) {
     t1 = Date.now();
     console.log("Operation took " + (t1 - t0) + " milliseconds.");
     return;
   } else {
-    fs.appendFile(`photos${n}.csv`, createNTimesSixPhotoSets(10, n), (err) => {
+    fs.appendFile(`photos${n}.csv`, createNTimesSixPhotoSets(500000, n), (err) => {
       if (err) throw err;
       console.log('The file has been appended!');
       generateSixtyMillionPhotoSets(n + 1);
