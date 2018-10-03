@@ -29,7 +29,7 @@ class PhotoWheel extends React.Component {
     this.exitModalWindow = this.exitModalWindow.bind(this);
 	}
 
-componentWillMount() {
+  componentWillMount() {
   this.getData();
 }
 
@@ -40,19 +40,19 @@ getData() {
     url: `/api/photos/${url}/restaurants`,
     data: {id: url},
     success: (data) => {
-      console.log('photos', data);
+      console.log('photos', data.rows);
       this.setState({
-        photos: data
+        photos: data.rows
       });
-      data = data.map(ele => {return ele.user});
+      data = data.rows.map(ele => { return ele.user });
       $.ajax({
 		    method: 'GET',
 		    url: `/api/photos/${url}/users`,
 		    data: {users: data},
 		    success: (result) => {
-          console.log('users', result);
+          console.log('users', result.rows);
 		      this.setState({
-		        users: result
+		        users: result.rows
 		      });
 		    },
 		    error: (err) => (

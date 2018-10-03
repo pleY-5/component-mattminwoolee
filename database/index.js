@@ -1,5 +1,5 @@
 // var mysql = require('mysql');
-const psql = require('pg');
+const { Client } = require('pg');
 
 // var db = mysql.createConnection({
 // 	multipleStatements: true,
@@ -9,19 +9,19 @@ const psql = require('pg');
 //   database: 'photos'
 // });
 
-const pool = new Pool({
+const db = new Client({
   user: process.env.PGUSER,
   host: process.env.PGHOST,
   database: process.env.PGDATABASE,
   password: process.env.PGPASSWORD,
   port: process.env.PGPORT,
-})
+});
 
 db.connect((err) => {
-	if (err) {
-		throw err;
-	}
-	console.log('connected to db');
+  if (err) {
+    throw err;
+  }
+  console.log('connected to db');
 });
 
 // var getAllPicturesById = function(restaurant, cb) {
