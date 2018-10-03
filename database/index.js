@@ -1,12 +1,21 @@
-var mysql = require('mysql');
+// var mysql = require('mysql');
+const psql = require('pg');
 
-var db = mysql.createConnection({
-	multipleStatements: true,
-  host: 'localhost',
-  user: 'root',
-  password: 'password',
-  database: 'photos'
-});
+// var db = mysql.createConnection({
+// 	multipleStatements: true,
+//   host: 'localhost',
+//   user: 'root',
+//   password: 'password',
+//   database: 'photos'
+// });
+
+const pool = new Pool({
+  user: process.env.PGUSER,
+  host: process.env.PGHOST,
+  database: process.env.PGDATABASE,
+  password: process.env.PGPASSWORD,
+  port: process.env.PGPORT,
+})
 
 db.connect((err) => {
 	if (err) {

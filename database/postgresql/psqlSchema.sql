@@ -31,10 +31,10 @@ CREATE TABLE pictures (
 );
 
 COPY users(name, friends, elite, reviews, avatar) 
-FROM '/Users/Mattminwoolee/desktop/SDC/photo-wheel/database/data/users.csv' DELIMITER ',' CSV HEADER;
+FROM '/Users/Mattminwoolee/desktop/SDC/photo-wheel/database/data/users.csv' DELIMITER ',' CSV;
 
 COPY restaurants(name) 
-FROM '/Users/Mattminwoolee/desktop/SDC/photo-wheel/database/data/companyNames.csv' DELIMITER ',' CSV HEADER;
+FROM '/Users/Mattminwoolee/desktop/SDC/photo-wheel/database/data/companyNames.csv' DELIMITER ',' CSV;
 
-COPY users(url, postdate, caption, user, restaurant) 
-FROM '/Users/Mattminwoolee/desktop/SDC/photo-wheel/database/data/photosNew.csv' DELIMITER ',' CSV HEADER;
+COPY photos(url, postdate, caption, user, restaurant) 
+FROM '/Users/Mattminwoolee/desktop/SDC/photo-wheel/database/data/photosNew.csv' DELIMITER ',' CSV;

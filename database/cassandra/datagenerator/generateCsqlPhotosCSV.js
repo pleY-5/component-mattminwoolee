@@ -51,17 +51,17 @@ const generateSixtyMillionPhotoSets = (n = 0) => {
   console.log(n);
   if ( n === 0) {
     t0 = Date.now();
-    fs.writeFile(`photos${n}.csv`, createNTimesSixPhotoSets(500000, 0), (err) => {
+    fs.writeFile(`photos${n}.csv`, createNTimesSixPhotoSets(100, 0), (err) => {
       if (err) throw err;
       console.log('The file has been saved!');
       generateSixtyMillionPhotoSets(n + 1);
     });
-  } else if ( n === 20 ) {
+  } else if ( n === 3 ) {
     t1 = Date.now();
     console.log("Operation took " + (t1 - t0) + " milliseconds.");
     return;
   } else {
-    fs.appendFile(`photos${n}.csv`, createNTimesSixPhotoSets(500000, n), (err) => {
+    fs.appendFile(`photos${n}.csv`, createNTimesSixPhotoSets(100, n), (err) => {
       if (err) throw err;
       console.log('The file has been appended!');
       generateSixtyMillionPhotoSets(n + 1);

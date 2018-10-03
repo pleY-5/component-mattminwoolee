@@ -1,22 +1,15 @@
-DROP TABLE restaurant_name;
-DROP TABLE photos;
-DROP TABLE users;
+DROP TABLE IF EXISTS test01.restaurant_name;
+-- DROP TABLE IF EXISTS test01.photos
+-- DROP TABLE IF EXISTS test01.users;
 
 
-CREATE TABLE restaurant_name (
+
+CREATE TABLE IF NOT EXISTS test01.restaurant_name (
 	name text PRIMARY KEY,
-  photos list <int>
+  photos list<int>
 );
 
-CREATE TABLE photos (
-  id integer PRIMARY KEY,
-  url text,
-  date text,
-  caption text,
-  user_id integer,
-);
-
-CREATE TABLE users (
+CREATE TABLE IF NOT EXISTS test01.users (
   id integer PRIMARY KEY,
   name text,
   elite integer,
