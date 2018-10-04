@@ -1,8 +1,23 @@
 const db = require('./../models/model.js');
 
-// Create and save a new data entry
+// Create and save a new data entry. 
 exports.create = ( req, res ) => { 
-
+  console.log('hi');
+  // Create pseudo data entry
+  var psuedoReqBody = { 
+    url: 'Test_URL',
+    postdate: 'Test_PostDate',
+    caption: 'Test_Caption',
+    user: req.params.user_id,
+    restaurant: req.params.restaurant_id
+  };
+  db.postPhoto(psuedoReqBody, (err, data) => {
+    if (err) {
+      res.send(err);
+    } else {
+      res.send(data);
+    }
+  });
 };
 
 // Retrieve and return all data entry from the database

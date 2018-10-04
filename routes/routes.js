@@ -1,8 +1,8 @@
 module.exports = (app) => {
   const data = require('./../controllers/controller.js');
 
-  // Create a new data entry
-  app.post('/data', data.create);
+  // Create a new data entry for photos
+  app.post('/api/photos/:user_id/:restaurant_id', data.create);
 
   // Retrieve all data entry from restaurants
   app.get('/api/photos/:idOrName/restaurants', data.findAll);

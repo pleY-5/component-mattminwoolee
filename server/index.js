@@ -1,4 +1,5 @@
 require('dotenv').config();
+require('newrelic');
 var express = require('express');
 var app = express();
 var path = require('path');
@@ -20,37 +21,6 @@ app.use(parser.json());
 app.use(parser.urlencoded({ extended: true }));
 app.use('/:idOrName', express.static('./public'));
 require('./../routes/routes.js')(app);
-
-
-// app.get('/api/photos/:idOrName/restaurants', cors(corsOptions), (req, res) => {
-//   if (isNaN(parseInt(req.params.idOrName))) {
-//     db.getAllPicturesByName(req.params.idOrName, (err,data) => {
-//       if (err) {
-//         res.send(err);
-//       } else {
-//         res.send(data);
-//       }
-//     });
-//   } else {
-//     db.getAllPicturesById(req.params.idOrName, (err, data) => {
-//     	if (err) {
-//     		res.send(err);
-//     	} else {
-//   		  res.send(data); 		
-//     	}
-//     });   
-//   }
-// });
-
-// app.get('/api/photos/:idOrName/users', cors(corsOptions), (req, res) => {
-//   db.getAllUsers(req.query.users, (err, data) => {
-//   	if (err) {
-//   		res.send(err);
-//   	} else {
-// 		  res.send(data); 		
-//   	}
-//   });
-// });
 
 var port = process.env.PORT || 3001;
 app.listen(port, () => console.log("Connected on port 3001"));
