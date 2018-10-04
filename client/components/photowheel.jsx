@@ -35,6 +35,7 @@ class PhotoWheel extends React.Component {
 
 getData() {
   var url = window.location.pathname.substring(1, window.location.pathname.length - 1).toLowerCase();
+  console.log('url', url);
   $.ajax({
     method: 'GET',
     url: `/api/photos/${url}/restaurants`,
