@@ -44,8 +44,6 @@ for(var i = 0; i < businessNames.length; i++) {
 	}
 }
 
-
-
 module.exports.photoData = photoData;
 module.exports.users = users;
 module.exports.businessNames = businessNames;

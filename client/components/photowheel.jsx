@@ -35,13 +35,11 @@ class PhotoWheel extends React.Component {
 
 getData() {
   var url = window.location.pathname.substring(1, window.location.pathname.length - 1).toLowerCase();
-  console.log('url', url);
   $.ajax({
     method: 'GET',
     url: `/api/photos/${url}/restaurants`,
     data: {id: url},
     success: (data) => {
-      console.log('photos', data.rows);
       this.setState({
         photos: data.rows
       });
@@ -49,9 +47,9 @@ getData() {
       $.ajax({
 		    method: 'GET',
 		    url: `/api/photos/${url}/users`,
-		    data: {users: data},
+		    // data: {users: data},
 		    success: (result) => {
-          console.log('users', result.rows);
+          // console.log('users', result);
 		      this.setState({
 		        users: result.rows
 		      });

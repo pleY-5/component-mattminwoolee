@@ -11,7 +11,7 @@ exports.postPhoto = function(data, cb) {
 };
 
 exports.getAllPicturesById = function(restaurant, cb) {
-  connection.db.query(`SELECT * FROM photos WHERE restaurant = ${restaurant}`, (err, result) => {
+  connection.db.query(`SELECT url, postdate, caption, "user" FROM photos WHERE restaurant = ${restaurant}`, (err, result) => {
     if (err) {
       cb(err, null);
     }	else {
@@ -21,7 +21,12 @@ exports.getAllPicturesById = function(restaurant, cb) {
 };
 
 exports.getAllPicturesByName = function(restaurant, cb) {
-  connection.db.query(`SELECT * FROM photos WHERE restaurant IN ( SELECT id FROM restaurants WHERE name = '${restaurant}')`, (err, result) => {
+  // convert lowercase restaurant name to uppercase
+  var newStrArr = restaurant.split('');
+  newStrArr[0] = newStrArr[0].toUpperCase();
+  newStrArr[2] = newStrArr[2].toUpperCase();
+  var newStr = newStrArr.join('');
+  connection.db.query(`SELECT url, postdate, caption, "user" FROM photos WHERE restaurant IN ( SELECT id FROM restaurants WHERE name = '${newStr}')`, (err, result) => {
     if (err) {	
       cb(err, null);
     }	else {

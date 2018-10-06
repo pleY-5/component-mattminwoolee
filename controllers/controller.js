@@ -1,17 +1,12 @@
 const db = require('./../models/model.js');
+const redis = require('redis');
+const REDIS_PORT = process.env.REDIS_PORT;
+const client = redis.createClient(REDIS_PORT);
 
 // Create and save a new data entry. 
 exports.create = ( req, res ) => { 
-  console.log('hi');
-  // Create pseudo data entry
-  var psuedoReqBody = { 
-    url: 'Test_URL',
-    postdate: 'Test_PostDate',
-    caption: 'Test_Caption',
-    user: req.params.user_id,
-    restaurant: req.params.restaurant_id
-  };
-  db.postPhoto(psuedoReqBody, (err, data) => {
+  console.log('req.body', req.body)
+  db.postPhoto(req.body, (err, data) => {
     if (err) {
       res.send(err);
     } else {
@@ -27,6 +22,9 @@ exports.findAll = (req, res) => {
       if (err) {
         res.send(err);
       } else {
+        var stored = data;
+        client.setex(req.params.idOrName, 100, stored);
+        // res.send(respond(req.params.idOrName, stored));
         res.send(data);
       }
     });
@@ -35,7 +33,10 @@ exports.findAll = (req, res) => {
       if (err) {
         res.send(err);
       } else {
-        res.send(data); 		
+        var stored = data;
+        client.setex(req.params.idOrName, 100, stored);
+        // res.send(respond(req.params.idOrName, stored));
+        res.send(data);	
       }
     });   
   }

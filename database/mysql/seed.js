@@ -1,5 +1,5 @@
-var data = require('../YelpData.js');
-var db = require('./index.js').db;
+var data = require('../../YelpData.js');
+var db = require('../index.js').db;
 
 console.log('starting first seed')
 db.query('INSERT INTO restaurants (name) VALUES ?', [data.businessNames], function (err, res) {

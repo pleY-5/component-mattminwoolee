@@ -2,13 +2,35 @@ config:
   target: 'http://localhost:3001'
   phases:
     - duration: 30
-      arrivalRate: 1000
-  defaults:
-    headers:
-      x-my-service-auth: '987401838271002188298567'
+      arrivalRate: 10
+  # payload:
+  #     # path is relative to the location of the test script
+  #     path: "users.csv"
+  #     fields:
+  #       - "username"
+  #       - "password"
+  variables:
+    productIds:
+      - ["999999", "999998", "999997", "999996", "245890"]
+      - ["999996", "999995", "999994", "999954", "245830"]
+      - ["999993", "999992", "999991", "938203", "245810"]
+      - ["999990", "999989", "999988", "213353", "245897"]
+      - ["999987", "999986", "999985", "987952", "245820"]
+  # processor: "./generateArr.js"
 scenarios:
   - flow:
-    - get:
-        url: "/api/photos/TuLan5a/restaurants"
-    - post: 
-        url: "/api/photos/1/1"
+    - loop:
+      - get:
+          url: "/api/photos/{{ $loopElement }}/restaurants"
+      over: {{ productIds }}
+      # count: 100
+      # - post: 
+      #     url: "/api/photos"
+      #     json:
+      #       url: 'Test_URL2'
+      #       postdate: 'Test_PostDate2'
+      #       caption: 'Test_Caption2'
+      #       user: 1
+      #       restaurant: 1
+
+    
