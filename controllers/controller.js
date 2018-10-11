@@ -1,6 +1,6 @@
 const db = require('./../models/model.js');
-const redis = require('redis');
-const client = redis.createClient(process.env.REDIS_REMOTE_PORT, process.env.REDIS_REMOTE_HOST);
+// const redis = require('redis');
+// const client = redis.createClient(process.env.REDIS_REMOTE_PORT, process.env.REDIS_REMOTE_HOST);
 
 // Create and save a new data entry. 
 exports.create = ( req, res ) => { 
@@ -22,8 +22,8 @@ exports.findAll = (req, res) => {
         res.send(err);
       } else {
         res.send(data);
-        var stored = data;
-        client.setex(req.params.idOrName, 100, JSON.stringify(stored));
+        // var stored = data;
+        // client.setex(req.params.idOrName, 100, JSON.stringify(stored));
       }
     });
   } else {
@@ -36,8 +36,8 @@ exports.findAll = (req, res) => {
         res.send(err);
       } else {
         res.send(data);	
-        var stored = data;
-        client.setex(req.params.idOrName, 100, JSON.stringify(stored));
+        // var stored = data;
+        // client.setex(req.params.idOrName, 100, JSON.stringify(stored));
       }
     });
   }

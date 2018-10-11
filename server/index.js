@@ -9,23 +9,23 @@ app.use(parser.urlencoded({ extended: true }));
 
 
 /** Redis Cache **/
-const redis = require('redis');
-const client = redis.createClient(process.env.REDIS_REMOTE_PORT, process.env.REDIS_REMOTE_HOST);
+// const redis = require('redis');
+// const client = redis.createClient(process.env.REDIS_REMOTE_PORT, process.env.REDIS_REMOTE_HOST);
 
-const cache = (req, res, next) => {
-  const key = req.params.idOrName;
-  client.get(key, function (err, data) {
-    if (err) { throw err; }
-    if (data) {
-      res.send(data);
-    } else {
-      next();
-    }
-  });
-};
+// const cache = (req, res, next) => {
+//   const key = req.params.idOrName;
+//   client.get(key, function (err, data) {
+//     if (err) { throw err; }
+//     if (data) {
+//       res.send(data);
+//     } else {
+//       next();
+//     }
+//   });
+// };
 
 // create middleware for redis cache
-app.get('/api/photos/:idOrName/restaurants', cache);
+// app.get('/api/photos/:idOrName/restaurants', cache);
 require('./../routes/routes.js')(app);
 
 /** Server side rendering **/
