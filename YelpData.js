@@ -33,6 +33,7 @@ for(var i = 0; i < 100; i++) {
 
 const months = {'01': 'January', '02': 'February', '03': 'March', '04': 'April', '05': 'May', '06': 'June', '07': 'July', '08': 'August', '09': 'September', '10': 'October', '11': 'November', '12': 'December'};
 
+
 for(var i = 0; i < businessNames.length; i++) {
 	for(var j = 0; j < 6; j++) {
 		var date = JSON.stringify(faker.date.between('2010-02-26', '2018-01-04')).substr(1,10);
