@@ -11,11 +11,11 @@ module.exports = (app) => {
   app.get('/api/photos/:idOrName/users', data.findAllUsers);
 
   // Retrieve a single data entry with an Id
-  app.get('/data/:noteId', data.findOne);
+  // app.get('/data/:noteId', data.findOne);
 
   // Update a data entry with an Id
-  app.put('/data/:noteId', data.update);
+  // app.put('/data/:noteId', data.update);
 
   // Delete a data entry with an Id
-  app.delete('/data/:noteId', data.delete);
+  // app.delete('/data/:noteId', data.delete);
 };

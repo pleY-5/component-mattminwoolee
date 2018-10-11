@@ -1,11 +1,9 @@
 const db = require('./../models/model.js');
 const redis = require('redis');
-const REDIS_PORT = process.env.REDIS_PORT;
-const client = redis.createClient(REDIS_PORT);
+const client = redis.createClient(process.env.REDIS_REMOTE_PORT, process.env.REDIS_REMOTE_HOST);
 
 // Create and save a new data entry. 
 exports.create = ( req, res ) => { 
-  console.log('req.body', req.body)
   db.postPhoto(req.body, (err, data) => {
     if (err) {
       res.send(err);
@@ -17,28 +15,31 @@ exports.create = ( req, res ) => {
 
 // Retrieve and return all data entry from the database
 exports.findAll = (req, res) => {
+  const key = req.params.idOrName;
   if (isNaN(parseInt(req.params.idOrName))) {
     db.getAllPicturesByName(req.params.idOrName, (err,data) => {
       if (err) {
         res.send(err);
       } else {
-        var stored = data;
-        client.setex(req.params.idOrName, 100, stored);
-        // res.send(respond(req.params.idOrName, stored));
         res.send(data);
+        var stored = data;
+        client.setex(req.params.idOrName, 100, JSON.stringify(stored));
       }
     });
   } else {
-    db.getAllPicturesById(req.params.idOrName, (err, data) => {
+    // client.get(key, function (err, data) {
+    //   if (data) {
+    //     res.send(data);
+    //   } else {
+    db.getAllPicturesById(key, (err, data) => {
       if (err) {
         res.send(err);
       } else {
-        var stored = data;
-        client.setex(req.params.idOrName, 100, stored);
-        // res.send(respond(req.params.idOrName, stored));
         res.send(data);	
+        var stored = data;
+        client.setex(req.params.idOrName, 100, JSON.stringify(stored));
       }
-    });   
+    });
   }
 };
 
@@ -51,11 +52,6 @@ exports.findAllUsers = (req, res) => {
       res.send(data); 		
     }
   });
-}
-
-// Find a single data entry with an ID
-exports.findOne = (req, res) => {
-
 };
 
 // Update a data identified by the nodeID in the request

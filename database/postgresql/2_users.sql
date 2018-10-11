@@ -1,5 +1,3 @@
-USE yelp;
-
 CREATE TABLE users (
   user_id bigserial NOT NULL,
   name CHARACTER varying(50),
@@ -10,4 +8,4 @@ CREATE TABLE users (
   PRIMARY KEY(user_id)
 );
 
-COPY users(name, friends, elite, reviews, avatar) FROM '/Users/Mattminwoolee/desktop/SDC/photo-wheel/database/data/users.csv' DELIMITER ',' CSV;
+\COPY users(name, friends, elite, reviews, avatar) FROM '/Users/Mattminwoolee/desktop/SDC/photo-wheel/database/data/users.csv' DELIMITER ',' CSV;

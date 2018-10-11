@@ -8,7 +8,7 @@
     "node": ">=6.13.0"
   },
   "scripts": {
-    "start": "nodemon server/index.js",
+    "start": "nodemon server/cluster.js",
     "react-dev": "webpack -d --watch",
     "seed": "mysql -u root -p < schema.sql && node database/seed.js",
     "seed1": "node database/seed2.js",
