@@ -5,15 +5,15 @@ var app = express();
 var parser = require('body-parser');
 var path = require('path');
 // var cors = require('cors');
-app.use('/:idOrName', express.static('./public'));
 app.use(parser.json());
 app.use(parser.urlencoded({ extended: true }));
 
 /********* Loader.io *********/
-app.get('/loaderio-2b1bab0fb8800e6ff1a3e9fa7593a4fb', (req, res) => {
+app.get('/loaderio-2b1bab0fb8800e6ff1a3e9fa7593a4fb/', (req, res) => {
   res.sendFile(path.resolve(__dirname, '../public/loaderio-2b1bab0fb8800e6ff1a3e9fa7593a4fb.txt'));
 });
 
+app.use('/:idOrName', express.static('./public'));
 /********* Redis Cache *********/
 const redis = require('redis');
 const client = redis.createClient(process.env.REDIS_REMOTE_PORT, process.env.REDIS_REMOTE_HOST);
