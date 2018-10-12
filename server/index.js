@@ -4,17 +4,14 @@ var app = express();
 var parser = require('body-parser');
 var path = require('path');
 // var cors = require('cors');
+app.use('/:idOrName', express.static('./public'));
+app.use(parser.json());
+app.use(parser.urlencoded({ extended: true }));
 
 /********* Loader.io *********/
 app.get('/loaderio-581f8b7f8619e3d2c1c2cc8a79b5b3d9', (req, res) => {
   res.sendFile(path.resolve(__dirname, '../public/loaderio-581f8b7f8619e3d2c1c2cc8a79b5b3d9.txt'));
 });
-
-app.use('/:idOrName', express.static('./public'));
-app.use(parser.json());
-app.use(parser.urlencoded({ extended: true }));
-
-
 
 /********* Redis Cache *********/
 // const redis = require('redis');
