@@ -1,4 +1,5 @@
 require('dotenv').config();
+require('newrelic');
 var express = require('express');
 var app = express();
 var parser = require('body-parser');
@@ -9,8 +10,8 @@ app.use(parser.json());
 app.use(parser.urlencoded({ extended: true }));
 
 /********* Loader.io *********/
-app.get('/loaderio-581f8b7f8619e3d2c1c2cc8a79b5b3d9', (req, res) => {
-  res.sendFile(path.resolve(__dirname, '../public/loaderio-581f8b7f8619e3d2c1c2cc8a79b5b3d9.txt'));
+app.get('/loaderio-2b1bab0fb8800e6ff1a3e9fa7593a4fb', (req, res) => {
+  res.sendFile(path.resolve(__dirname, '../public/loaderio-2b1bab0fb8800e6ff1a3e9fa7593a4fb.txt'));
 });
 
 /********* Redis Cache *********/
